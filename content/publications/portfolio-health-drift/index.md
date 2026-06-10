@@ -12,15 +12,7 @@ publication_types: ["article"]
 publication: "Working paper, AQUMON Research"
 publication_short: "Working paper"
 
-abstract: >
-  Automated wealth management platforms must continuously monitor whether client portfolios remain
-  aligned with their designated model portfolios. Standard rebalancing triggers based on absolute
-  weight deviations are sensitive to threshold choice and fail to account for the directional
-  and covariance structure of drift. We propose a drift-based portfolio health metric that
-  quantifies the degree of misalignment between a held portfolio and its target model in a
-  manner invariant to correlated asset movements. The metric supports principled rebalancing
-  triggers and serves as a diagnostic tool for advisors and compliance functions in digital
-  wealth platforms.
+# TODO: Replace with verified abstract from manuscript.
 
 summary: >
   A drift-based portfolio health metric measuring misalignment from model portfolios;
