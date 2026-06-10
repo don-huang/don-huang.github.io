@@ -13,18 +13,18 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   identity:
     # Site name - shown in navbar, footer, copyright, and browser title by default
-    name: "Your Name"
+    name: "Yao Tung Huang"
     # Legal entity for copyright notices (defaults to name if not set)
     organization: ""
     # Schema.org type for structured data
     type: person                        # person | organization | local_business
     # Short tagline displayed on your site
-    tagline: ""
+    tagline: "Financial Mathematics · Stochastic Control · AI in Finance"
     # Site meta description for search engines and social sharing
-    description: "The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website."
+    description: "Yao Tung Huang (Don HUANG) — researcher and fintech entrepreneur working at the intersection of financial mathematics, stochastic control, machine learning, and AI-driven wealth management."
     # Social accounts (used for meta tags like Twitter Cards)
     social:
-      twitter: "BuildLore"              # Twitter/X handle for Twitter Cards (without @)
+      twitter: ""              # Twitter/X handle for Twitter Cards (without @)
 
   # ────────────────────────────────────────────────────────────────────────────
   # THEME
@@ -70,7 +70,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   layout:
     # Border radius: 'none', 'sm', 'md', 'lg', or 'full'
-    radius: "md"
+    radius: "sm"
     # Spacing density: 'compact', 'comfortable', or 'spacious'
     spacing: "comfortable"
     # Avatar shape in author profiles
@@ -87,7 +87,7 @@ hugoblox:
     # Stick to top on scroll
     sticky: true
     # Menu alignment
-    align: center                       # left | center | right
+    align: left                         # left | center | right
     # Feature toggles
     search: true
     theme_toggle: true
@@ -157,7 +157,7 @@ hugoblox:
   content:
     # Math rendering
     math:
-      enable: false
+      enable: true
     # Table of contents
     toc:
       enable: true

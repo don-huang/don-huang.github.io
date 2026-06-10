@@ -1,0 +1,649 @@
+\documentclass[11pt]{article}
+
+% =========================
+% Page & Typography
+% =========================
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{setspace}
+
+% =========================
+% Formatting helpers
+% =========================
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+
+
+% URL / Hyperlink (line-break safe)
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\urlstyle{same}
+
+% More tolerant line-breaking (prevents overfull hboxes)
+\sloppy
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\newcommand{\CVSection}[1]{\vspace{6pt}\textbf{\large #1}\par\vspace{2pt}\hrule\vspace{6pt}}
+\newcommand{\CVSubsection}[1]{\textbf{#1}\par}
+
+\newenvironment{tightitemize}{%
+  \begin{itemize}[leftmargin=*,nosep,topsep=2pt]
+}{\end{itemize}}
+
+\newcommand{\ProjectBlock}[1]{\vspace{4pt}\textbf{#1}\par}
+
+% -------------------------
+% Editable header fields
+% -------------------------
+\newcommand{\ApplicantName}{Don HUANG}
+\newcommand{\ApplicantTitle}{Co-Founder \& Chief Scientist, AQUMON (Magnum Research Limited)}
+\newcommand{\ApplicantEmail}{don.huang@example.com}
+\newcommand{\ApplicantPhone}{+852-XXXX-XXXX}
+\newcommand{\ApplicantLocation}{Hong Kong SAR}
+\newcommand{\TargetCommittee}{Selection Committee}
+
+
+% =========================
+% Auto numbering for Section 2 projects (2.1, 2.2, ...)
+% Usage: \CVProjectSubsection{<Client: Title>}
+% Reset counter at the beginning of Section 2: \CVProjectCounterReset
+% =========================
+\newcounter{cvproj}
+
+% Reset helper (call once right after \CVSection{Section 2: ...})
+\newcommand{\CVProjectCounterReset}{\setcounter{cvproj}{0}}
+
+% Auto-numbered subsection: 2.<n> <title>
+\newcommand{\CVProjectSubsection}[1]{%
+  \refstepcounter{cvproj}%
+  \CVSubsection{2.\arabic{cvproj}\quad #1}%
+}
+
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Academic Curriculum Vitae -- Don HUANG Yao Tung}}\\[4pt]
+\end{center}
+
+\CVSection{Cover Letter}
+
+Dear \TargetCommittee,
+
+I am writing to submit my academic curriculum vitae for your review. I earned my Ph.D.\ in Mathematics from The Hong Kong University of Science and Technology, and my research career has centered on stochastic optimization, financial mathematics, and artificial intelligence. I have held academic appointments at institutions including The Hong Kong University of Science and Technology, City University of Hong Kong and Imperial College London, and have published multiple first-author papers in leading international journals.
+
+In 2016, I founded AQUMON (Magnum Research Limited) and have served as its Chief Scientist. AQUMON pioneered an AI-powered retirement investment advisory system in Hong Kong, delivering MPF (Mandatory Provident Fund) planning and management capabilities at population scale. The platform has served approximately one million Hong Kong residents and has supported cumulative assets under management/advice exceeding USD 10 billion. Our approach has been recognized by the Mandatory Provident Fund Schemes Authority (MPFA), and AQUMON is widely regarded as a milestone in the modernization of Hong Kong’s retirement investing experience.
+
+Beyond retirement investing, I have led AQUMON’s scientific team in deep collaboration with Hong Kong universities, delivering two large-scale R\&D projects under the Enterprise Support Scheme (ESS) and three joint projects with The Hong Kong University of Science and Technology under the Innovation and Technology Support Programme (ITSP). These initiatives have generated breakthrough outcomes across reinforcement learning, large language models (LLMs), robo-advisory intelligence, and ESG analytics. Importantly, we have consistently translated research into production-grade capabilities, commercializing these innovations to empower the day-to-day wealth-management and investment workflows of dozens of financial institutions.
+
+
+From a governance and industry standpoint, I serve as a Responsible Officer under the Securities and Futures Commission (SFC) for Type 1, 4, and 9 regulated activities. Under this regulated structure, I have led teams building production-grade AI robo-advisory technologies, and AQUMON became the first robo-advisory firm approved by the SFC in Hong Kong---a step that required not only technical excellence, but also robust controls, suitability frameworks, and operational discipline.
+
+Over the past years, I have led the R\&D of core AI wealth-management technologies that have been commercialized through more than 50 institutional partnerships. I have also trained and mentored over 100 data and AI scientists, and have built durable expertise at the intersection of large language models (LLMs), machine learning, and financial engineering. These innovations have been recognized by authoritative international awards, including \emph{KPMG China FinTech 50} and \emph{Forbes Asia 100 To Watch}.
+
+Finally, I would like to note that the Bank of China (Hong Kong) Sciencne and Technology Innovation Award is widely regarded as one of the most prestigious recognitions in Hong Kong’s fintech ecosystem. Receiving this award would be a tremendous encouragement to me and to the entire AQUMON team. It would further motivate us to continue advancing research and innovation, translate breakthroughs into real-world products that serve Hong Kong residents, and develop globally competitive technologies that strengthen Hong Kong’s position as an international financial center.
+
+Thank you for your consideration.
+
+Sincerely,\\[10pt]
+\ApplicantName
+
+\CVSection{About AQUMON}
+
+AQUMON is a Hong Kong-based fintech company specializing in the application of artificial intelligence and machine learning to financial markets. Guided by the principle of “technology-driven financial transformation,” AQUMON continuously advances the integration of quantitative investing with big-data analytics. With quantitative research and automated trading strategies at its core, the company develops intelligent research platforms and a diversified suite of algorithmic services spanning key use cases such as asset allocation, risk management, and robo-advisory. AQUMON is also actively deploying large language models (LLMs) to enhance the visualization, interpretability, and interactivity of research outputs, thereby improving decision efficiency for both institutions and investors.
+
+AQUMON has built a dedicated team of 50+ scientists with strong multidisciplinary expertise in AI, mathematical modeling, and large-scale data engineering. The team has sustained strengths in frontier areas including stochastic optimization, deep learning, and reinforcement learning, with end-to-end capabilities from algorithmic innovation through industrial-grade deployment. By processing multimodal data, AQUMON integrates structured market and fundamental data with unstructured text and sentiment signals to generate more comprehensive investment insights and quantitative strategies. Today, AQUMON collaborates with dozens of banks, securities firms, asset managers, and insurers globally to accelerate the intelligent upgrade of wealth management.
+
+AQUMON’s proprietary AI research platform has been recognized by leading international institutions, including selection into \emph{Forbes Asia 100 To Watch}, as well as repeated recognition in \emph{KPMG FinTech 50}, and inclusion in the \emph{Greater Bay Area FinTech Flying Fish Top 20}.
+
+Company website: \href{https://www.aqumon.com/}{https://www.aqumon.com/}
+
+
+
+
+\CVSection{Section 0: Major Awards and Recognitions}
+
+% ---------- 2025 HKICTA Silver ----------
+
+\noindent\textbf{2025 \quad KPMG China FinTech ``Dual 50'' (Second Consecutive Year; Third Time Since 2020)}\\
+\begin{tightitemize}
+  \item \textbf{Awarding body:} KPMG China.
+  \item \textbf{Selection rationale:} Recognized for breakthrough fintech products in 2025 and demonstrated industry enablement, with measurable impact in improving the efficiency and quality of wealth-management and institutional investment workflows; AQUMON was listed for the second consecutive year and achieved its third inclusion since 2020.
+  \item \textbf{Applicant's contribution:} As Chief Scientist, the applicant led the end-to-end R\&D and productization of \textbf{InvestEase.ai}, an AI-powered investment intelligence platform built to ``empower financial professionals.'' The applicant designed and oversaw the core \textbf{agentic} architecture and model stack, directing the research team to deliver advanced AI agents that address information overload and decision bottlenecks in private banking and wealth management, including:
+  \begin{tightitemize}
+    \item \textbf{InvestPal (AI Research Copilot):} near real-time parsing of investment targets and extraction of decision-critical signals.
+    \item \textbf{AI Macro (Macro Compass):} forward-looking macro and cross-asset insights for the next 1--3 months to support tactical allocation.
+    \item \textbf{AI Report (One-click Research Report):} automated generation of fund/ETF deep-dive reports, replacing time-consuming manual analysis.
+    \item \textbf{Multi-asset Portfolio Builder:} rapid, goal-aligned portfolio construction across asset classes with interactive, user-friendly workflows.
+  \end{tightitemize}
+  The applicant also led the extension of these capabilities into institution-specific deployments (insurance, pensions, and trusts), enabling customizable tools such as an intelligent retirement calculator, an institutional-grade portfolio management system, and deep fund-comparison analytics tailored to pension and ILP/ILAS decision contexts.
+  \item \textbf{Impact:} Converted AQUMON’s long-standing panoramic financial data infrastructure into \emph{actionable} industry insights and production-grade AI agents, delivering tangible productivity gains for frontline advisors and scalable, configurable fintech solutions for institutional clients across multiple business lines.
+\end{tightitemize}
+
+\noindent\textbf{2025 \quad Hong Kong ICT Awards (HKICTA) -- FinTech (Banking, Investment \& Insurance), Silver Award (AQUMON InvestEase)}\\
+\begin{tightitemize}
+  \item \textbf{Awarding body:} Office of the Government Chief Information Officer (OGCIO), HKSAR Government, together with leading industry bodies.
+  \item \textbf{Selection rationale:} Recognized for technological innovation and real-world impact in digital wealth management; InvestEase was selected as one of only \textbf{four} award-winning solutions across Hong Kong in this flagship category.
+  \item \textbf{Applicant's contribution:} As Co-Founder and Chief Scientist, the applicant led the R\&D roadmap and core architecture of AQUMON’s next-generation \textbf{AI agent} capabilities for wealth management, delivering goal-directed, compliant, and scalable agentic workflows that enhance suitability-aware advice, portfolio insights, and advisor productivity, and translating LLM/RL research into production-grade modules deployed in daily institutional operations.
+  \item \textbf{Impact:} Accelerated adoption of agentic and AI-driven workflows in production wealth-management settings and strengthened AQUMON’s market leadership in Hong Kong’s digital wealth management ecosystem.
+\end{tightitemize}
+
+\vspace{0.6em}
+
+% ---------- 2024 KPMG FinTech 50 ----------
+\noindent\textbf{2024 \quad KPMG China FinTech 50}\\
+\begin{tightitemize}
+  \item \textbf{Awarding body:} KPMG China.
+  \item \textbf{Selection rationale:} Recognized for technological innovation and commercialization excellence in fintech, with demonstrated improvements in the efficiency, quality, and scalability of wealth-management services.
+  \item \textbf{Applicant's contribution:} As Founder and Chief Scientist, the applicant led the development and commercialization of:
+    \begin{tightitemize}
+      \item \textbf{Pension Asset Allocation System (Hong Kong):} Integrated data, AI, and a strong user experience to deliver institutional-grade MPF asset allocation and advisory at scale; established a market benchmark.
+      \item \textbf{AI Wealth-Management Assistant:} Built a news-semantic labeling taxonomy and data architecture enabling instant sales pitches and cross-sectional/time-series fund analysis; improved product sales efficiency by \textbf{600\%}.
+    \end{tightitemize}
+  \item \textbf{Impact:} Deployed through institutional channels to serve approximately seven million citizens and becoming a reference standard for retirement investing in Hong Kong.
+\end{tightitemize}
+
+\vspace{0.6em}
+
+% ---------- 2022 Forbes Asia 100 To Watch ----------
+\noindent\textbf{2022 \quad Forbes Asia ``100 To Watch''}\\
+\begin{tightitemize}
+  \item \textbf{Awarding body:} Forbes.
+  \item \textbf{Selection rationale:} Selected among leading Asia-Pacific start-ups addressing real-world challenges through innovative products and services; AQUMON was one of the few Hong Kong technology companies recognized.
+  \item \textbf{Applicant's contribution:} As Founder and Chief Scientist, the applicant provided core technical leadership in AI-driven investment research, portfolio decision systems, and product commercialization that underpinned AQUMON’s selection.
+  \item \textbf{Impact:} Increased international visibility and credibility, supporting institutional partnerships and broader adoption of AI-enabled wealth-management solutions.
+\end{tightitemize}
+
+\vspace{0.6em}
+
+% ---------- 2022 GBA Flying Fish Top 20 ----------
+\noindent\textbf{2022 \quad Top 20 ``Flying Fish'' FinTech Companies in the Guangdong--Hong Kong--Macao Greater Bay Area}\\
+\begin{tightitemize}
+  \item \textbf{Awarding bodies:} Regional financial regulators and innovation agencies in the Greater Bay Area (including Shenzhen and Hong Kong).
+  \item \textbf{Selection rationale:} Recognized for high growth potential, technological innovation, and industry leadership; the Top 20 highlights high-growth enterprises strengthening the regional fintech ecosystem.
+  \item \textbf{Applicant's contribution:} As Founder and Chief Scientist, the applicant led the development of AQUMON’s core AI investment research and wealth-management technology stack and drove production deployment that formed the technical basis for this recognition.
+  \item \textbf{Impact:} Strengthened AQUMON’s positioning in the Greater Bay Area and accelerated cross-region collaboration and commercialization opportunities.
+\end{tightitemize}
+
+\vspace{0.6em}
+
+% ---------- 2020 HKICTA Emerging Solution ----------
+\noindent\textbf{2020 \quad Hong Kong ICT Awards (HKICTA) -- Emerging Solution Award}\\
+\begin{tightitemize}
+  \item \textbf{Awarding body:} Hong Kong Association of Banks (HKAB), under the Hong Kong ICT Awards programme.
+  \item \textbf{Selection rationale:} Recognized for leadership in technology innovation and practical impact across financial services, including banking, insurance, brokerage, funds, and asset management.
+  \item \textbf{Applicant's contribution:} As Founder and Chief Scientist, the applicant led end-to-end R\&D and deployment of the award-winning AI-enabled investment solution, including model design, validation, and productization under real-world constraints.
+  \item \textbf{Impact:} Established AQUMON as a pioneer of regulated, production-grade AI wealth-management solutions in Hong Kong and laid the foundation for subsequent flagship products.
+\end{tightitemize}
+
+% ---------- Optional: define tightitemize if your template doesn't have it ----------
+% \usepackage{enumitem}
+% \newenvironment{tightitemize}
+%   {\begin{itemize}[leftmargin=1.2em,itemsep=2pt,topsep=2pt,parsep=0pt,partopsep=0pt]}
+%   {\end{itemize}}
+
+
+% =========================================================
+% Section 1: Achievements
+% =========================================================
+\CVSection{Section 1: Scientific and Technological Achievements}
+
+\textbf{Research Focus.}
+The applicant’s research focuses on the deep integration of artificial intelligence with financial mathematics, and has developed a coherent research framework that combines stochastic control theory, probabilistic analysis, and machine learning. Methodologically, the applicant models complex financial dynamics using path-dependent stochastic differential equations and weak convergence theory, and solves high-dimensional stochastic control problems via regression-based Monte Carlo and machine-learning algorithms (including reinforcement learning). At the system level, the applicant integrates financial natural language processing (NLP) and large language models (LLMs) into advisory platforms to build explainable and iteratively improvable intelligent decision-making frameworks.
+
+\textbf{Key Research Directions.}
+\begin{tightitemize}
+  \item \textbf{Stochastic optimization and derivatives pricing:} Develop models for complex derivatives and implement efficient numerical algorithms for pricing and risk management.
+  \item \textbf{Machine learning for asset allocation (including reinforcement learning and adaptive policies):} Construct adaptive multi-stage investment strategies, with emphasis on pension and annuity product design and optimization.
+  \item \textbf{Financial NLP and large language models:} Integrate financial NLP, investor-intent understanding, sentiment analysis, and strategy recommendation to develop financial AI assistants with capabilities for understanding, explanation, and generation.
+  \item \textbf{ESG investing and sustainable finance:} Build machine-learning-driven quantitative evaluation systems for sustainable investing to support decarbonization and net-zero objectives for corporates and governments.
+\end{tightitemize}
+
+\vspace{0.6em}
+\textbf{Major R\&D and Industrial Translation.}
+The applicant has led multiple R\&D initiatives that translated theory into deployable systems with significant economic and social impact:
+\begin{tightitemize}
+  \item \textbf{HKSAR pension AI investment system:} Built pension asset-allocation models based on machine learning and portfolio management. The system has been deployed across Hong Kong’s MPF ecosystem and multiple pension managers, supporting assets under management/advice exceeding \textbf{USD 10 billion}. The algorithms have enabled approximately \textbf{one million} residents to make more scientific retirement investment decisions, improving long-term outcomes and contributing to lower societal retirement burdens.
+  \item \textbf{ESG intelligent scoring and strategy-screening system:} Constructed an ESG factor library and sustainable-investing ratings powered by machine learning. The methodology has been adopted by the HKSAR Government and multiple listed companies, and supports financial institutions in implementing ISSB standards \textbf{IFRS S1} and \textbf{IFRS S2}, contributing to improved sustainability performance under carbon-peaking and carbon-neutrality strategies.
+  \item \textbf{Intelligent robo-advisory and quantitative research platform:} Developed a AI-driven advisory platform integrating data ingestion, signal generation, strategy backtesting, portfolio construction, and risk controls. LLMs are used to enhance investor-intent recognition and natural-language explanation, enabling financial institutions to upgrade toward ``intelligent research'' in wealth management and risk control.
+  \item \textbf{Machine-learning-driven portfolio optimization system:} For challenging investment decisions in high-frequency markets, introduced distributed machine learning (including reinforcement learning) and policy-search algorithms to build robust portfolio-optimization models. The system has been deployed at multiple financial institutions and has improved risk-adjusted returns.
+\end{tightitemize}
+
+\textbf{Scale, Funding, and Recognition.}
+To date, these projects have served more than \textbf{50} financial institutions globally, spanning banks, brokerages, insurers, and pension managers. The applicant’s R\&D work has received dedicated support from Hong Kong’s Innovation and Technology ecosystem. The resulting innovations have also been recognized internationally, including \emph{Forbes Asia 100 To Watch}, \emph{KPMG FinTech 50}, and the \emph{Greater Bay Area ``Flying Fish'' Top 20}.
+
+\textbf{Forward-looking Agenda.}
+Looking ahead, the applicant will continue advancing interdisciplinary research at the intersection of financial mathematics and AI, with a focus on translating frontier theory into high-performance algorithms and deployable industrial applications, strengthening the global competitiveness of fintech innovation in Hong Kong and Mainland China.
+
+
+% --- Add this note BEFORE the following subsections (1.1--1.5) ---
+\noindent\textit{Note: The following items are selected excerpts of the applicant’s scientific and technological R\&D projects.}\\
+\noindent\textit{Further technical details can be provided upon request.}
+
+\vspace{0.6em}
+
+\CVSubsection{1.1 Scientific Asset Allocation and Portfolio Construction}
+
+As the leader of the AQUMON research and development team, the applicant developed a global asset allocation model driven by algorithms. The methodology incorporates intertemporal asset allocation theory and modern estimation techniques and is designed for institutional deployment under regulatory constraints.
+
+\CVSubsection{1.2 Macroeconomic Nowcasting System}
+
+AQUMON built a macroeconomic nowcasting system that aggregates global high-frequency macroeconomic data and produces near-term forecasts and regime classifications to support tactical asset allocation and risk monitoring.
+
+\CVSubsection{1.3 Regime-Change Detection with Applications to Risk Management}
+
+The applicant led the development of change-point and regime-change detection methods that support investment risk monitoring, macroeconomic forecasting, and risk management product development.
+
+\CVSubsection{1.4 Environmental, Social, and Governance Ratings Methodology}
+
+AQUMON developed a quantitative environmental, social, and governance evaluation framework emphasizing interpretability, reduced subjectivity, and cross-industry comparability.
+
+\CVSubsection{1.5 Artificial-Intelligence Client Service in Wealth Management}
+
+AQUMON developed an artificial-intelligence-driven wealth management assistant to improve advisor productivity and client experience, including real-time sales pitch generation and fund analytics based on a news-semantic labeling taxonomy and robust data architecture.
+
+
+\CVSection{Section 2: Selected Financial Technology Projects}
+
+\noindent\textit{Note: The following projects are selected excerpts of the applicant’s fintech R\&D and commercialization work. Further technical details can be provided upon request.}
+
+% =========================================================
+% 2.0 Project Highlight (template style)
+% =========================================================
+% =========================================================
+% 2.1 AIA MPF Smart Advisor (was "Project Highlight", now numbered)
+% =========================================================
+\CVSubsection{2.1 AIA: AI-Driven MPF Retirement Advisory System (``MPF Smart Advisor'')}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} AQUMON partnered with AIA to launch an AI-driven MPF retirement advisory system (``MPF Smart Advisor'') integrated into the AIA+ mobile app. The solution transforms complex MPF fund selection and retirement planning into a guided, user-friendly digital experience.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Algorithmic, goal-based personalization:} Generates portfolio recommendations tailored to an individual’s risk profile and retirement goals, moving beyond one-size-fits-all rule-based suggestions.
+    \item \textbf{Data-driven retirement-gap analytics:} Provides retirement gap analysis and scenario comparison to make long-horizon retirement adequacy measurable and actionable.
+    \item \textbf{Explainable decision workflow:} Presents recommendations with clear rationale and comparable alternatives, improving transparency and user trust---a key requirement for regulated wealth and pension advisory deployments.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Simplifies complexity:} Reduces the cognitive burden of navigating MPF fund choices by turning professional-grade allocation logic into an intuitive workflow.
+    \item \textbf{Improves decision quality:} Helps users align MPF investments with long-term retirement objectives using structured analysis (gap diagnostics, comparisons, and goal tracking).
+    \item \textbf{Builds confidence and autonomy:} Empowers everyday users to make better retirement decisions with greater clarity, consistency, and control.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Chief Scientist):} The applicant led the scientific design and system architecture of the AI-driven advisory engine, including the portfolio-construction logic, personalization pipeline, and explainability layer. The applicant also directed the R\&D team to translate the research methodology into a production-grade, compliance-aware solution suitable for large-scale institutional distribution, ensuring robustness, auditability, and real-world usability.
+  \item \textbf{Media coverage:}
+\href{https://wealth.hket.com/article/4022675/}{Hong Kong Economic Times (HKET): AIA Desired Retirement Tracker and MPF retirement planning insights}%
+\footnote{\href{https://wealth.hket.com/article/4022675/}{\texttt{https://wealth.hket.com/article/4022675/}}}.
+\end{tightitemize}
+
+% =========================================================
+% 2.1 CITIC Securities
+% =========================================================
+\CVSubsection{2.2 CITIC Securities: Fund Supermarket + Robo-Advisory for Retail Wealth Management}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} AQUMON delivered a digital wealth-management solution to CITIC Securities that combines (i) a fund supermarket and (ii) AI-driven portfolio advisory, enabling end users to discover eligible funds and receive personalized portfolio recommendations within one platform.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Governance-aware fund selection:} Consolidates funds across multiple fund houses while enforcing an institution-defined whitelist, enabling controlled product distribution at scale.
+    \item \textbf{Algorithmic portfolio construction:} Uses data-driven risk profiling and portfolio optimization to generate personalized allocations, designed to operate under institutional compliance constraints.
+    \item \textbf{End-to-end decision workflow:} Connects fund discovery, selection, and portfolio guidance to reduce friction from ``search'' to ``action'' for retail users.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Better discovery and comparability:} Provides a unified interface for fund comparison across houses, reducing search costs and decision fatigue.
+    \item \textbf{More suitable portfolios:} Delivers customized advisory aligned with users’ objectives and risk tolerance, improving the quality and consistency of investment decisions.
+    \item \textbf{Business outcomes:} Supports scalable growth in engagement and assets under management for the relevant business line.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Chief Scientist):} The applicant led the algorithmic design for fund selection and portfolio construction, established model governance and configuration mechanisms for institutional controls, and directed the R\&D team to deliver an enterprise-ready system aligned with CITIC’s product governance and compliance requirements.
+  \item \textbf{Media coverage:} Available upon request (institutional references and deployment notes can be provided where permitted).
+\end{tightitemize}
+
+% =========================================================
+% 2.2 Huatai Securities
+% =========================================================
+\CVSubsection{2.3 Huatai Securities: Cloud-Deployed Robo-Advisory-as-a-Service (RaaS)}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} AQUMON provided Huatai Securities with a cloud-deployed robo-advisory solution integrated into Huatai’s digital channels, covering portfolio modeling, data processing, UX, compliance reporting, and trade placement.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Cloud-native RaaS architecture:} Enables rapid deployment and integration without heavy on-premise build-out, shortening delivery cycles.
+    \item \textbf{Institutional-grade workflow coverage:} From suitability and portfolio generation through to reporting and order-routing, designed for production operations.
+    \item \textbf{Risk-aware global allocation:} Supports one-click global asset allocation with embedded risk monitoring and drawdown-aware guidance.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Fast time-to-market:} Reduced implementation time to approximately four weeks, enabling rapid product launch.
+    \item \textbf{Better user experience:} Provides an intuitive one-click pathway to diversified global portfolios.
+    \item \textbf{Improved risk management:} Helps users navigate market volatility through disciplined allocation and systematic monitoring.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Chief Scientist):} The applicant designed the portfolio and risk engines for cloud delivery, defined the compliance-aware integration blueprint, and led the R\&D team to productionize the system under tight delivery timelines.
+  \item \textbf{Media coverage:}
+  \begin{tightitemize}
+    \item \href{https://fundselectorasia.com/huatai-international-unveils-joint-robo-advisory-service/}{Fund Selector Asia: ``Huatai International unveils joint robo-advisory service''.}
+    \item \href{https://www.hk01.com/%E8%B2%A1%E7%B6%93%E5%BF%AB%E8%A8%8A/747614/%E8%8F%AF%E6%B3%B0%E5%9C%8B%E9%9A%9B-%E6%BC%B2%E6%A8%82%E5%85%A8%E7%90%83%E9%80%9A-%E8%88%87aqumon%E5%90%88%E4%BD%9C-%E6%8E%A8%E5%87%BA-%E6%A8%82%E6%8A%95-%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%A7%E9%A0%85%E7%9B%AE}{HK01: Huatai International and AQUMON launched the ``Le Tou'' intelligent advisory initiative.}
+  \end{tightitemize}
+\end{tightitemize}
+
+% =========================================================
+% 2.3 CMB Wing Lung Bank
+% =========================================================
+\CVSubsection{2.4 China Merchants Bank Wing Lung Bank: Mutual-Fund Robo-Advisory Embedded in Mobile Banking}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} AQUMON delivered a mutual-fund-based robo-advisory service embedded in the bank’s mobile banking app, supported by a customized \textit{SmartX-ray} portfolio diagnostic and recommendation framework.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Portfolio diagnostics + recommendation:} Combines portfolio ``X-ray'' analysis with suitability-aware recommendation to improve transparency and guidance.
+    \item \textbf{Bank-grade embedding:} Designed for integration into mobile-banking infrastructure with auditable workflows and stable operations.
+    \item \textbf{Fee-structure support:} Enables an advisory-fee model while minimizing transaction friction, supported by scalable digital advisory delivery.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Accessible advisory:} Brings consistent, scalable portfolio guidance to retail clients via a familiar banking channel.
+    \item \textbf{Greater transparency:} Improves understandability through portfolio diagnostics and structured fund analytics.
+    \item \textbf{Operational scalability:} Supports the bank’s digital advisory expansion with systematic and repeatable service delivery.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Chief Scientist):} The applicant led the scientific design of the SmartX-ray methodology, defined the data and system architecture for mobile embedding, and directed the R\&D team to deliver a production-grade, audit-ready advisory workflow for bank distribution.
+  \item \textbf{Media coverage:}
+  \href{https://www.hk01.com/%E8%B2%A1%E7%B6%93%E5%BF%AB%E8%A8%8A/710212/%E6%8B%9B%E5%95%86%E6%B0%B8%E9%9A%86%E9%8A%80%E8%A1%8C-%E6%99%BA%E6%8A%95%E6%98%93-%E6%9C%8D%E5%8B%99%E7%8D%B2-%E5%89%B5%E6%96%B0%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80%E9%8A%80%E8%A1%8C%E6%9C%8D%E5%8B%99-%E7%8D%8E}{HK01: China Merchants Bank Wing Lung Bank ``Zhi Tou Yi'' won an ``Innovative FinTech Banking Service'' award.}
+\end{tightitemize}
+
+% =========================================================
+% 2.4 AIA (ILAS/ILP)
+% =========================================================
+\CVSubsection{2.5 AIA: AI-Enabled Investment Choice Service for Investment-Linked Products}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} AQUMON partnered with AIA to provide an AI-enabled Investment Choice Service supporting fund selection and portfolio guidance for investment-linked insurance products.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Constraint-aware recommendation:} Portfolio guidance tailored to product constraints and suitability considerations typical in ILAS/ILP contexts.
+    \item \textbf{Algorithmic selection at scale:} Systematic fund evaluation and recommendation designed for consistent digital delivery.
+    \item \textbf{Explainable guidance:} Improves transparency and trust by presenting decision rationale and comparable alternatives.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Improved selection quality:} Helps users make more consistent and suitable choices within product menus.
+    \item \textbf{Modern digital experience:} Enables a guided insurance-investment journey through algorithmic insights.
+    \item \textbf{Scalable service delivery:} Supports insurer distribution with repeatable, auditable advisory workflows.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Chief Scientist):} The applicant led the adaptation of AQUMON’s investment engines to the insurance product setting and directed the team to productionize an insurer-ready workflow emphasizing robustness, explainability, and operational stability.
+  \item \textbf{Media coverage:}
+  \href{https://read01.com/zh-hk/MJEPa37.html#.YzVByOxBz0o}{Read01: AIA and AQUMON collaborated to build an intelligent investment advisory service in Hong Kong.}
+\end{tightitemize}
+
+% =========================================================
+% 2.5 BOCI
+% =========================================================
+\CVSubsection{2.6 Bank of China International (BOCI): Private-Banking Global Asset Allocation (U.S.-Listed ETFs)}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} AQUMON deployed its SmartGlobal framework with Bank of China International to deliver global asset allocation services for private-banking clients using U.S.-listed ETFs.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Institution-grade allocation framework:} Systematic portfolio construction with embedded risk controls and monitoring suitable for private banking.
+    \item \textbf{ETF-based implementation:} Uses liquid, transparent building blocks for efficient global diversification and operational execution.
+    \item \textbf{Production deployment under constraints:} Designed to operate within institutional suitability and operational requirements.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Broader access:} Lowered the minimum account size from \textbf{USD 1,000,000} to \textbf{USD 250,000}, expanding access to institution-grade global allocation workflows.
+    \item \textbf{Consistent portfolio discipline:} Provides repeatable, risk-aware allocation decisions and monitoring for private-banking users.
+    \item \textbf{Operational efficiency:} Supports scalable delivery of global asset allocation services through digital workflows.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Chief Scientist):} The applicant designed the SmartGlobal allocation methodology and led the production deployment blueprint, aligning investment logic, risk controls, and operational workflows for private-banking distribution.
+  \item \textbf{Media coverage:} Available upon request (client-facing materials and institutional references can be provided where permitted).
+\end{tightitemize}
+
+% =========================================================
+% 2.6 China Asset Management
+% =========================================================
+\CVSubsection{2.7 China Asset Management: Multi-Factor ``Big Data + AI'' Investment Solution (CSI 300)}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} AQUMON provided China Asset Management with a multi-factor ``big data + AI'' investment solution designed to enhance systematic signal discovery and portfolio implementation in the CSI 300 context.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Machine-learning-enhanced factor modeling:} Improves signal robustness and adapts to regime variation using modern ML techniques.
+    \item \textbf{Market-structure-aware design:} Tailors signal engineering and validation to the characteristics of Mainland China equity markets.
+    \item \textbf{Deployable research-to-production pipeline:} Aligns research outputs with long-only fund constraints and operational implementation needs.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Improved research efficiency:} Automates data processing and systematic signal extraction, reducing manual research burden.
+    \item \textbf{Better product competitiveness:} Supports a long-only strategy with systematic insights that contributed to performance and AUM growth.
+    \item \textbf{Scalable methodology:} Provides a repeatable framework that can be extended to additional mandates and datasets.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Chief Scientist):} The applicant led the end-to-end scientific design (signal engineering, model selection, robustness validation) and guided productionization into a deployable framework aligned with the fund’s investment constraints and operational workflow.
+  \item \textbf{Media coverage:}
+  \href{https://www.risk.net/asset-management/6168046/the-machine-shines-in-hong-kong-a-share-fund}{Risk.net: ``The machine shines in Hong Kong A-share fund''.}
+\end{tightitemize}
+
+% =========================================================
+% Selected R\&D Projects (Formatted to match the screenshot style)
+% Template fields:
+%   - What it is
+%   - Technical advancement (sub-bullets)
+%   - User value and impact (sub-bullets)
+%   - Applicant's contribution (Chief Scientist / Project Lead)
+%   - Project period / Funding source / Total funding / Participants
+% =========================================================
+
+\CVSubsection{2.8 ESG + Machine Learning --- Quantitative Scoring System and AI-Driven Investment Modeling}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} Built a quantitative ESG scoring system and an AI-driven investment modeling framework combining machine learning and financial NLP, enabling consistent and explainable assessment of sustainability risks and opportunities for institutional use.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Four-layer evaluation framework:} Designed a \textbf{Pillar--Category--Topic--Metric} methodology linking data engineering, model development, and production deployment.
+    \item \textbf{Multi-source, multimodal modeling:} Integrated structured indicators with unstructured signals (news and public sentiment) via robust semantic modeling and indicator normalization.
+    \item \textbf{Dynamic weight updating:} Implemented adaptive weighting to improve stability and responsiveness under regime shifts and sector heterogeneity.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Coverage and freshness:} Covered 3{,}000+ listed companies with \textbf{daily} score updates.
+    \item \textbf{Better decision quality:} Improved scoring accuracy by approximately \textbf{20\%} compared with traditional approaches.
+    \item \textbf{Actionable investment signal:} In backtests, strategies combining ESG scores with fundamentals exceeded the benchmark by \textbf{15\%+}.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Project Lead / Chief Scientist):} Defined the research roadmap; built and led a cross-disciplinary team; designed the evaluation framework and modeling pipeline; and drove the end-to-end translation from research prototypes to production-grade scoring and analytics modules.
+\end{tightitemize}
+
+\vspace{0.8em}
+
+\CVSubsection{2.9 BCT Group: AI-Driven MPF Investment Advisor (BCT Group)}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} Delivered an AI-driven pension investment advisory system for BCT Group and its MPF customer base in Hong Kong, generating personalized retirement asset-allocation recommendations at scale under suitability and governance constraints.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Lifecycle + ALM-informed optimization:} Built personalization and portfolio optimization grounded in lifecycle investing and asset--liability management principles.
+    \item \textbf{Real-time personalization at scale:} Solved latency and throughput challenges under large account volumes using automated feature engineering and distributed computation.
+    \item \textbf{Compliance-aware deployment:} Designed auditable recommendation workflows aligned with institutional governance and suitability requirements.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Seconds-level responsiveness:} Enabled recommendations to be generated within seconds for frontline advisory and self-service channels.
+    \item \textbf{Scale and AUM:} Designed to scale to nearly \textbf{7 million} Hong Kong residents and to support/assist management of \textbf{USD 10B+} in pension assets.
+    \item \textbf{Improved risk-adjusted performance:} Sharpe ratio increased by approximately \textbf{15\%}.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Project Lead / Chief Scientist):} Assembled and led the engineering and data-science team; defined system architecture and model selection; and oversaw end-to-end delivery from data integration through portfolio engines, validation, and production rollout.
+   \item \textbf{Media coverage:}
+  \href{https://www.bcthk.com/en/tools-and-support/ai-advisor}{BCT MPF Market-First AI Advisor MARIO with AQUMON}
+  \footnote{\url{https://www.bcthk.com/en/tools-and-support/ai-advisor}}.
+\end{tightitemize}
+
+\vspace{0.8em}
+
+\CVSubsection{2.10 Sunlife: AI-Driven MPF Investment Advisor (Sun Life)}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} Implemented an AI-driven retirement investment solution commissioned by Sun Life, supporting both advisor workflows and end-client retirement planning with dynamic, lifecycle-aware recommendations.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Unified data integration layer:} Integrated heterogeneous data across product lines and channels into a consistent advisory data layer.
+    \item \textbf{Advisor-facing decision support:} Built a visual decision-support interface enabling real-time plan generation with transparency.
+    \item \textbf{Dynamic re-optimization:} Implemented mechanisms to update portfolios as markets and client circumstances evolve.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Advisor productivity:} Service efficiency improved by approximately \textbf{30\%}.
+    \item \textbf{Client outcomes:} Investment performance improved by approximately \textbf{12\%} at comparable risk levels.
+    \item \textbf{Scalable service design:} Designed to scale to serve \textbf{4 million+} residents.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Project Lead / Chief Scientist):} Defined the technical roadmap; built and trained a cross-disciplinary team; led model design and end-to-end implementation; and ensured production readiness through robustness validation and operational integration.
+    \item \textbf{Media coverage:}
+  \href{https://www.sunlife.com.hk/en/about-us/newsroom/news-releases/2024/sun-life-announces-mpf-navigator-next-generation-investment-tool/}{Sun Life Announces "MPF Navigator" Next-generation Investment Tool with AQUMON}
+  \footnote{\url{https://www.sunlife.com.hk/en/about-us/newsroom/news-releases/2024/sun-life-announces-mpf-navigator-next-generation-investment-tool/}}.
+\end{tightitemize}
+
+\vspace{0.8em}
+
+\CVSubsection{2.11 Heng An Standard Life: Innovative Online Investment Portfolio Platform (Heng An Standard Life (Asia))}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} Developed an online investment-portfolio platform for investment-linked assurance products, improving transparency and personalization through data-driven analytics and portfolio construction workflows for both clients and advisors.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Product-level analytics at scale:} Modeled 300+ ILAS/ILP products, including return structures, fees, and risk linkages.
+    \item \textbf{Robust ML under noisy conditions:} Addressed high-dimensional features, noisy labels, and class imbalance to achieve stable production performance.
+    \item \textbf{Human-centered interface:} Delivered advisor- and client-facing workflows that translate model outputs into understandable actions.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Operational throughput:} Supported thousands of portfolio-generation requests per day after launch.
+    \item \textbf{Improved client experience:} Client satisfaction improved by \textbf{30\%+}.
+    \item \textbf{Better transparency:} Helped users understand fees, risks, and portfolio implications in a structured workflow.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Project Lead / Chief Scientist):} Built and led the actuarial and data-science team; directed model design, system integration, and UI implementation; and ensured that the end-to-end platform met stability, governance, and production requirements.
+      \item \textbf{Media coverage:}
+\href{https://www.hengansl.com.hk/en/news/Ming_Pao_Award_In_Plus}{Heng An Standard Life (Asia) launches innovative online investment portfolio platform In+ in collaboration with WealthTech expert with AQUMON}
+\footnote{\url{https://www.hengansl.com.hk/en/news/Ming_Pao_Award_In_Plus}}.
+\end{tightitemize}
+
+\vspace{0.8em}
+
+\CVSubsection{2.12 Machine-Learning-Driven Trading Strategies under a Robo-Advisory Research Platform}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} Built a machine-learning-driven quantitative trading and investment research platform covering data ingestion, signal research, portfolio construction, backtesting evaluation, execution support, and risk monitoring for governance-ready institutional deployment.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{End-to-end research-to-production stack:} Designed distributed storage, feature pipelines, model training, and evaluation frameworks supporting reproducible strategy development.
+    \item \textbf{High-frequency data engineering:} Developed efficient data cleaning and feature extraction modules to meet low-latency and high-throughput requirements.
+    \item \textbf{Parallelized experimentation:} Leveraged parallel computation to accelerate iteration cycles and improve research efficiency.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Improved risk-adjusted returns:} Annualized Sharpe ratio increased by approximately \textbf{15\%}.
+    \item \textbf{Higher research productivity:} Reduced time-to-insight by automating data processing, backtesting, and evaluation.
+    \item \textbf{Deployable governance:} Enabled more consistent, auditable, and scalable strategy deployment in real-world operations.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Project Lead / Chief Scientist):} Defined the end-to-end architecture; led technical choices across data infrastructure, feature engineering, modeling, and evaluation; and coordinated academic collaboration when needed to ensure scientific rigor and deployability.
+\end{tightitemize}
+
+
+% =========================================================
+% Add this as the next numbered item after your existing 2.7
+% (i.e., Project 1 -> 2.8). Same screenshot-style structure.
+% Media link is visibly clickable + full URL in footnote.
+% =========================================================
+
+\CVSubsection{2.13 Portfolio Management via Reinforcement Learning}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} An R\&D project to advance the application of reinforcement learning (RL) to portfolio management, focusing on continuous allocation and rebalancing decisions with realistic constraints and transaction-cost considerations.
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{Formal RL formulation for portfolio rebalancing:} Casts portfolio management as a sequential decision-making problem (state--action--reward) to optimize risk-adjusted return under dynamic market conditions.
+    \item \textbf{Transaction-cost-aware optimization:} Incorporates trading frictions into the objective so the learned policy accounts for turnover and implementation costs.
+    \item \textbf{Algorithmic exploration of RL families:} Evaluates and prototypes representative approaches (e.g., value-based and recurrent/sequence-based RL) for financial time-series decision-making.
+  \end{tightitemize}
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{More adaptive portfolio decisions:} Enables data-driven, regime-responsive allocation policies beyond static or purely heuristic strategies.
+    \item \textbf{Better implementability:} Improves real-world deployability by explicitly modeling trading costs and rebalancing constraints.
+    \item \textbf{Reusable research asset:} Produces a methodological and experimental foundation that can be transferred into production research pipelines for systematic portfolio construction.
+  \end{tightitemize}
+  \item \textbf{Applicant’s contribution (Chief Scientist / Project Lead):} The applicant led the scientific direction of the project, including problem formulation, reward design, methodology selection, and experimental design. The applicant also guided the team to translate the research outcomes into reusable components and evaluation protocols consistent with institutional research and model-governance standards.
+  \item \textbf{Project period:} January 2, 2019 -- December 31, 2021.
+  \item \textbf{Government project profile:} \href{https://www.itf.gov.hk/en/project-search/project-profile/index.html?ReferenceNo=UIM/365}{Innovation and Technology Fund (ITF) project profile (Reference No.: UIM/365)}\footnote{\url{https://www.itf.gov.hk/en/project-search/project-profile/index.html?ReferenceNo=UIM/365}}.
+  \item \textbf{Industry entity:} Magnum Research Limited (the AQUMON brand is held under Magnum Research Limited).
+\end{tightitemize}
+
+\CVSubsection{Project 2.14 Artificial-Intelligence-Driven Automatic Wealth Management Solution}
+
+\begin{tightitemize}
+  \item \textbf{What it is:} A production-grade, online wealth-management solution that delivers algorithm-driven, customized portfolio advice through a digital workflow. The system supports the full advisory lifecycle, including client profiling, portfolio construction, rebalancing, and ongoing monitoring, designed for institution-grade deployment and day-to-day operations.
+
+  \item \textbf{Technical advancement:}
+  \begin{tightitemize}
+    \item \textbf{End-to-end advisory decision workflow:} Translates client objectives and risk profiles into actionable portfolio recommendations with repeatable rebalancing logic and monitoring rules.
+    \item \textbf{Hybrid-cloud, large-scale data foundation:} Built on a hybrid-cloud data-integration research platform capable of covering historical and real-time data for a very large global asset universe, enabling robust research, portfolio analytics, and scalable advisory delivery.
+    \item \textbf{High-fidelity backtesting + anti-overfitting controls:} Provides low-cost, high-fidelity historical replay and systematic performance analysis with anti-overfitting mechanisms to reduce overly-optimistic results and improve reliability.
+    \item \textbf{Automation-ready execution integration:} Designed to connect validated strategies and portfolio decisions to an execution/trading layer with auditable operational workflows, supporting institutional operational requirements.
+  \end{tightitemize}
+
+  \item \textbf{User value and impact:}
+  \begin{tightitemize}
+    \item \textbf{Scalable digital advice:} Enables consistent, repeatable portfolio guidance to be delivered at scale via online channels.
+    \item \textbf{Improved decision consistency:} Standardizes portfolio construction and monitoring rules, reducing ad-hoc decision variance and improving governance readiness.
+    \item \textbf{Faster product iteration:} A modular research--validation--deployment pipeline shortens the cycle from idea to production under real-world constraints.
+  \end{tightitemize}
+
+  \item \textbf{Applicant’s contribution (Chief Scientist / Project Lead):} The applicant led the scientific and system design of the solution, including portfolio-engine architecture, validation methodology (backtesting and robustness controls), and productionization under governance and operational constraints. The applicant coordinated cross-disciplinary R\&D (data, algorithms, engineering) to deliver a deployable, audit-ready, institution-grade system.
+
+  \item \textbf{Project period:} April 1, 2021 -- March 31, 2024.
+
+  \item \textbf{Government project profile:} \href{https://www.itf.gov.hk/en/project-search/project-profile/index.html?ReferenceNo=B/E003/20}{Innovation and Technology Fund (ITF) project profile (Reference No.: B/E003)}%
+  \footnote{\url{https://www.itf.gov.hk/en/project-search/project-profile/index.html?ReferenceNo=B/E003/20}}.
+
+  \item \textbf{Industry entity:} Magnum Research Limited (the AQUMON brand is held under Magnum Research Limited).
+\end{tightitemize}
+
+
+
+% =========================================================
+% Section 4: Invited Talks (moved here)
+% =========================================================
+\CVSection{Section 3: Invited Talks at Major International Academic Conferences (First Author)}
+
+\begin{tightitemize}
+  \item \textbf{Society for Industrial and Applied Mathematics Conference on Financial Mathematics and Engineering} (Chicago, United States of America): \textit{``Regression-based Monte Carlo methods for stochastic control models.''}
+  \item \textbf{World Congress of the Bachelier Finance Society (Eighth Congress)} (Brussels, Belgium): \textit{``Analysis of Optimal Dynamic Withdrawal Policies in Withdrawal Guarantee Products.''}
+  \item \textbf{International Gerber--Shiu Workshop (Fifth Workshop)} (Hong Kong): \textit{``Analysis of Optimal Dynamic Withdrawal Policies in Withdrawal Guarantee Products.''}
+  \item \textbf{National University of Singapore--University of Tokyo Workshop} (Singapore): \textit{``Analysis of Optimal Dynamic Withdrawal Policies in Withdrawal Guarantee Products.''}
+\end{tightitemize}
+
+% =========================================================
+% Section 5: Publications
+% =========================================================
+\CVSection{Section 4: Academic Publications and Technical Whitepapers}
+
+Huang, Y.\ T.\ (2026). \textit{A Two-Layer Attribution Framework for Portfolios Built from Mixed-Asset Products}. Working paper (technical note), AQUMON Research.
+
+Huang, Y.\ T.\ (2025). \textit{Drift Minimization under Lot-Size Constraints: A Practical Integer-Share Rebalancing Problem in Robo-Advisory}. Working paper, AQUMON Research.
+
+Huang, Y.\ T.\ (2024). \textit{Defining and Measuring Portfolio Health: A Drift-Based Metric Relative to Model Portfolios}. Working paper, AQUMON Research.
+
+
+Huang, Y.\ T., Zeng, P., and Kwok, Y.\ K.\ (2017). Optimal initiation of Guaranteed Lifelong Withdrawal Benefit with dynamic withdrawals. \textit{SIAM Journal on Financial Mathematics}, 8(1), 804--840.
+
+Huang, Y.\ T., Song, Q., and Zheng, H.\ (2017). Weak convergence of path-dependent stochastic differential equations in basket credit default swap pricing with contagion risk. \textit{SIAM Journal on Financial Mathematics}, 8(1), 1--27.
+
+Huang, Y.\ T., and Kwok, Y.\ K.\ (2016). Regression-based Monte Carlo methods for stochastic control models: Variable annuities with lifelong guarantees. \textit{Quantitative Finance}, 16(6), 905--928.
+
+Huang, Y.\ T., and Kwok, Y.\ K.\ (2014). Analysis of optimal dynamic withdrawal policies in withdrawal guarantee products. \textit{Journal of Economic Dynamics and Control}, 45, 19--43.
+
+Research Excellent Award, The Hong Kong University of Science and Technology, December 2012.
+
+
+\end{document}

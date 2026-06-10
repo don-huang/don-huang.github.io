@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+
+% ---------- Packages ----------
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+
+% ---------- Hyperref ----------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  citecolor=black
+}
+
+% ---------- Formatting ----------
+\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=2pt}
+\setlist[enumerate]{leftmargin=*, itemsep=2pt, topsep=2pt}
+
+% Slightly lighter section rule for a cleaner academic look
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\vspace{-4pt}\rule{\textwidth}{0.4pt}]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{6pt}{4pt}
+
+\newcommand{\role}[2]{\textbf{#1}\hfill \textit{#2}}
+\newcommand{\place}[1]{\textit{#1}}
+\newcommand{\smallgap}{\vspace{4pt}}
+
+\begin{document}
+
+% ---------- Header (Polished) ----------
+\begin{center}
+  {\LARGE\bfseries Don, Yao Tung HUANG}\par
+  \vspace{4pt}
+
+  {\normalsize
+  Co-Founder \& Chief Scientist, AQUMON \;\textbullet\;
+  AI \& Mathematical Modeling in Wealth Management
+  \par}
+  \vspace{6pt}
+
+  \begin{tabular*}{0.92\textwidth}{@{\extracolsep{\fill}} l c r @{}}
+    \href{mailto:don.huang@magnumwm.com}{don.huang@magnumwm.com}
+    & \href{https://www.linkedin.com/in/don-yao-tung-huang-8b590124}{LinkedIn}
+    & \href{https://www.aqumon.com}{www.aqumon.com}
+  \end{tabular*}
+\end{center}
+\vspace{6pt}
+
+% ---------- Summary ----------
+\section{Summary}
+Investment scientist and entrepreneur with 17+ years of experience spanning financial mathematics, stochastic control, and AI/model-driven wealth management. Co-founded AQUMON (2016) and led the build-out of core technical teams, architecture, product logic, and algorithm engines for institutional digital wealth management.
+
+% ---------- Research Interests ----------
+\section{Research Interests}
+\begin{itemize}
+  \item Financial Mathematics
+  \item Probability Theory
+  \item Stochastic Control
+  \item Portfolio Management and Optimization
+  \item Machine Learning and AI for Asset/Wealth Management
+\end{itemize}
+
+% ---------- Professional Experience ----------
+\section{Professional Experience}
+
+\subsection*{AQUMON}
+\role{Co-Founder \& Chief Scientist}{Nov 2015 -- Present}
+\\ \place{Hong Kong and Singapore}
+\begin{itemize}
+  \item Co-founded AQUMON and led the end-to-end build of the core technical team, system architecture, product logic, and algorithm stack, establishing a top-tier wealth management investment algorithm engine in Asia.
+  \item Drove vertical applications of mathematical models and AI in WealthTech, including portfolio optimization, portfolio analytics, risk modeling, and LLM-enabled wealth management workflows.
+  \item Led the AQUMON team to develop AI-driven wealth management solutions for multiple financial institutions in Singapore, improving operational efficiency and investment outcomes with strong market feedback.
+  \item Built and scaled institutional partnerships globally (60+ institutions), contributing to AQUMON's leading position in Asia's digital wealth management landscape.
+\end{itemize}
+
+\subsection*{DBS Bank}
+\role{Quant \& Structurer, Treasury and Markets}{Aug 2008 -- May 2010}
+\\ \place{Hong Kong SAR and Singapore}
+\begin{itemize}
+  \item Worked with sales and trading to deliver hedging and investment solutions for corporate and retail clients via derivative products.
+\end{itemize}
+
+% ---------- Academic Appointments ----------
+\section{Academic Appointments}
+
+\subsection*{The Hong Kong University of Science and Technology (HKUST)}
+\role{Lecturer and Visiting Scholar}{Aug 2015 -- Jan 2016}
+\begin{itemize}
+  \item Research fields: Machine Learning, Financial Mathematics, Stochastic Control, Probability Theory.
+  \item Teaching (Fall 2015): \textit{MATH2511 Fundamentals of Actuarial Mathematics}, \textit{MATH4999 Capstone Projects in Mathematics and Economics}.
+\end{itemize}
+
+\subsection*{City University of Hong Kong}
+\role{Postdoctoral Fellow}{Sep 2014 -- Aug 2015}
+\begin{itemize}
+  \item Worked with Prof.\ Qingshuo Song on research in machine learning, financial mathematics, stochastic control, and probability theory.
+\end{itemize}
+
+\subsection*{Imperial College London}
+\role{Visiting Scholar}{Nov 2014 -- Dec 2014}
+\\ \place{London, United Kingdom}
+\begin{itemize}
+  \item Collaborated with the Mathematics Department on stochastic control research.
+\end{itemize}
+
+% ---------- Education ----------
+\section{Education}
+
+\role{The Hong Kong University of Science and Technology}{2011 -- 2014}
+\\ Ph.D.\ in Mathematics (Machine Learning, Financial Mathematics, Stochastic Control, Portfolio Optimization)
+
+\smallgap
+\role{The Hong Kong University of Science and Technology}{2007 -- 2008}
+\\ M.Sc.\ in Mathematics (Financial Mathematics and Statistics)
+
+\smallgap
+\role{Huazhong University of Science and Technology}{2000 -- 2004}
+\\ B.Eng.\ in Computer Science and Information Systems
+
+% ---------- Publications ----------
+\section{Selected Publications}
+\begin{enumerate}
+  \item \textbf{Yao Tung Huang}, Pingping Zeng, and Yue Kuen Kwok.
+  \textit{Optimal Initiation of Guaranteed Lifelong Withdrawal Benefit with Dynamic Withdrawals}.
+  SIAM Journal on Financial Mathematics, 8(1), 804--840, 2017.
+
+  \item \textbf{Yao Tung Huang}, Qingshuo Song, and Harry Zheng.
+  \textit{Weak Convergence of Path-Dependent SDEs and Functionals in Pricing Basket CDS with Counterparty Risk and Contagion Risk}.
+  SIAM Journal on Financial Mathematics, 8, 1--27, 2017.
+
+  \item \textbf{Yao Tung Huang} and Yue Kuen Kwok.
+  \textit{Regression-Based Monte Carlo Methods for Stochastic Control Models: Variable Annuities with Lifelong Guarantees}.
+  Quantitative Finance, 16(6), 905--928, 2016.
+
+  \item \textbf{Yao Tung Huang} and Yue Kuen Kwok.
+  \textit{Analysis of Optimal Dynamic Withdrawal Policies in Withdrawal Guarantee Products}.
+  Journal of Economic Dynamics and Control, 45, 19--43, 2014.
+\end{enumerate}
+
+% ---------- Invited Talks ----------
+\section{Invited Talks (Academic Conferences)}
+\begin{itemize}
+  \item \textbf{NUS--UTokyo Workshop}, Singapore, 26--27 September 2013.
+  \item \textbf{8th World Congress of the Bachelier Finance Society}, Brussels, Belgium, 2--6 June 2014.
+  \item \textbf{The 5th International Gerber--Shiu Workshop}, Hong Kong, 7--8 July 2014.
+  \item \textbf{SIAM Conference on Financial Mathematics \& Engineering}, Chicago, USA, 13--15 November 2014.
+\end{itemize}
+
+% ---------- Honors & Awards ----------
+\section{Honors and Awards}
+\begin{itemize}
+  \item HKUST Research Excellence Award
+  \item The George K. Lee Foundation Scholarships
+  \item Ph.D.\ Scholarship (2011--2014)
+\end{itemize}
+
+% ---------- Military Service ----------
+\section{Military Service}
+\begin{itemize}
+\item Served mandatory military service (2004--2006) under the \textbf{Army, Ministry of National Defense (MND), Taiwan}, as an \textbf{Anti-Armor Assault Team Member}, strengthening grit and resilience, teamwork, and a high standard of discipline.
+
+\end{itemize}
+
+% ---------- Additional ----------
+\section{Additional Information}
+\begin{itemize}
+  \item Location: Hong Kong SAR and Singapore
+  \item Web: \href{https://www.aqumon.com}{AQUMON} \quad\textbullet\quad
+        LinkedIn: \href{https://www.linkedin.com/in/don-yao-tung-huang-8b590124}{Profile}
+\end{itemize}
+\vfill
+\begin{flushright}
+{\footnotesize Last updated: Jan 2026}
+\end{flushright}
+
+\end{document}
