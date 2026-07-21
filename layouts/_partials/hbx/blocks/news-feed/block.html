@@ -1,0 +1,31 @@
+{{/* Local news index: a compact, chronological text list. */}}
+{{ $block := .wcBlock }}
+{{ $items := (where site.RegularPages "Section" "news").ByDate.Reverse }}
+
+<div class="news-feed">
+  {{ if $items }}
+    <div class="news-list">
+      {{ range $items }}
+        <article class="news-item">
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Params.summary }}
+            <p class="news-summary">{{ . | markdownify }}</p>
+          {{ end }}
+          <div class="news-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+            {{ with .GetTerms "categories" }}
+              <span aria-hidden="true">·</span>
+              <ul aria-label="Categories">
+                {{ range . }}
+                  <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                {{ end }}
+              </ul>
+            {{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  {{ else }}
+    <p class="news-empty">{{ $block.content.empty_text | default "News updates are being prepared. Please check back soon." }}</p>
+  {{ end }}
+</div>
