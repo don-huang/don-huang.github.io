@@ -1,0 +1,1174 @@
+\documentclass[aspectratio=169,12pt]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,array,multicol}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{microtype}
+
+% --------------------------------------------------
+% Academic beamer style for a broad-audience lecture
+% Design principle: every important concept has two layers:
+% 1) Core intuition for first-time AI learners
+% 2) Technical lens for students with stronger background
+% --------------------------------------------------
+\definecolor{LectureBlue}{RGB}{51,51,180}
+\definecolor{FooterBlue}{RGB}{24,26,96}
+\definecolor{DarkText}{RGB}{20,20,20}
+\definecolor{LightBox}{RGB}{246,246,250}
+\definecolor{SoftBlue}{RGB}{236,240,255}
+\definecolor{SoftGreen}{RGB}{238,248,240}
+\definecolor{SoftOrange}{RGB}{255,246,235}
+\definecolor{MidGray}{RGB}{85,85,85}
+\definecolor{DeepGreen}{RGB}{20,96,64}
+\definecolor{DeepOrange}{RGB}{150,82,20}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.95cm,dp=0.20cm,leftskip=0.32cm]{headline}%
+      \usebeamerfont{headline}\color{white}\currentframetitle
+    \end{beamercolorbox}%
+  }%
+}
+\setbeamercolor{headline}{bg=LectureBlue,fg=white}
+\setbeamerfont{headline}{series=\mdseries,size=\Large}
+\setbeamertemplate{frametitle}{}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.78\paperwidth,ht=0.32cm,dp=0.2cm,leftskip=0.22cm]{footerleft}%
+      \color{white}\scriptsize don-huang.com
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.22\paperwidth,ht=0.32cm,dp=0.2cm,rightskip=0.22cm plus1fil]{footerright}%
+      \color{white}\scriptsize \hfill \insertframenumber\ / \inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+\setbeamercolor{footerleft}{bg=FooterBlue,fg=white}
+\setbeamercolor{footerright}{bg=LectureBlue,fg=white}
+
+\setbeamercolor{normal text}{fg=DarkText,bg=white}
+\setbeamercolor{item}{fg=FooterBlue}
+\setbeamertemplate{itemize item}{\color{FooterBlue}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{FooterBlue}$\circ$}
+\setbeamertemplate{enumerate item}{\color{FooterBlue}\insertenumlabel.}
+
+\newcommand{\currentframetitle}{}
+\newcommand{\slideTitle}[1]{\gdef\currentframetitle{#1}\frametitle{#1}}
+\newcommand{\keyterm}[1]{\textbf{#1}}
+\newcommand{\twocol}[2]{\begin{columns}[T,onlytextwidth]\begin{column}{0.49\textwidth}#1\end{column}\begin{column}{0.49\textwidth}#2\end{column}\end{columns}}
+\newcommand{\mainidea}[1]{%
+  \vspace{0.08cm}
+  \begin{beamercolorbox}[wd=\linewidth,rounded=true,sep=0.18cm]{mainideabox}
+    \small\textbf{Core intuition:} #1
+  \end{beamercolorbox}%
+}
+\newcommand{\techlens}[1]{%
+  \vspace{0.08cm}
+  \begin{beamercolorbox}[wd=\linewidth,rounded=true,sep=0.18cm]{techlensbox}
+    \small\textbf{Technical lens:} #1
+  \end{beamercolorbox}%
+}
+\newcommand{\finlens}[1]{%
+  \vspace{0.08cm}
+  \begin{beamercolorbox}[wd=\linewidth,rounded=true,sep=0.18cm]{finlensbox}
+    \small\textbf{Finance lens:} #1
+  \end{beamercolorbox}%
+}
+\newcommand{\takeaway}[1]{%
+  \vspace{0.08cm}
+  \begin{beamercolorbox}[wd=\linewidth,rounded=true,sep=0.18cm]{takeawaybox}
+    \small\textbf{Takeaway:} #1
+  \end{beamercolorbox}%
+}
+\newcommand{\visual}[1]{%
+  \vspace{0.12cm}
+  \begin{beamercolorbox}[wd=\linewidth,rounded=true,sep=0.16cm]{visualbox}
+    \scriptsize\textbf{Suggested visual:} #1
+  \end{beamercolorbox}%
+}
+
+\newcommand{\sourcefigure}[3]{%
+  \vspace{0.08cm}
+  \begin{center}
+    \includegraphics[width=#2\linewidth,height=0.62\paperheight,keepaspectratio]{#1}\\[-0.02cm]
+    {\tiny\color{MidGray}Source: #3}
+  \end{center}%
+}
+
+\setbeamercolor{mainideabox}{bg=SoftBlue,fg=DarkText}
+\setbeamercolor{techlensbox}{bg=SoftGreen,fg=DeepGreen}
+\setbeamercolor{finlensbox}{bg=SoftOrange,fg=DeepOrange}
+\setbeamercolor{takeawaybox}{bg=LightBox,fg=DarkText}
+\setbeamercolor{visualbox}{bg=LightBox,fg=MidGray}
+
+\title{AI Application in FinTech}
+\subtitle{From Machine Learning Foundations to Agentic WealthTech}
+\author{Don HUANG Yao Tung, PhD \\ AQUMON}
+\institute{HKUST Lecture Series}
+\date{2026 Edition}
+
+\begin{document}
+
+% --------------------------------------------------
+\begin{frame}
+\slideTitle{AI Application in FinTech}
+\vspace{0.65cm}
+{\Huge \textbf{AI Application in FinTech}}\\[0.25cm]
+{\Large From Machine Learning Foundations to Agentic WealthTech}\\[0.45cm]
+{\large Don HUANG Yao Tung, PhD}\\[0.10cm]
+{\large Chief Scientist and Co-founder at AQUMON}
+\vfill
+\end{frame}
+
+
+% --------------------------------------------------
+\section{Part I: AI Technology Foundations}
+
+
+
+\begin{frame}
+\slideTitle{The Original Question: Can Machines Think?}
+\begin{itemize}
+  \item Alan Turing reframed a philosophical question into an operational test.
+  \item Instead of asking what thinking ``really is,'' he asked whether a machine can behave intelligently in conversation.
+  \item Today, AI is broader than imitation. We care about systems that can perceive, predict, reason, plan, act and learn from feedback.
+\end{itemize}
+\mainidea{AI is not one technology. It is a family of methods for turning information into useful behavior.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: The Turing Test}
+\sourcefigure{figures_pdf/turing_test_diagram.pdf}{0.68}{Juan Alberto Sánchez Margallo, Wikimedia Commons, CC BY 2.5.}
+\vspace{-0.04cm}
+{\scriptsize\textit{Lecture point:} Turing reframed intelligence as observable behavior in a controlled interaction.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{A Practical Definition of AI}
+\begin{itemize}
+  \item \keyterm{Artificial intelligence} refers to computational systems that perform tasks normally associated with human cognition.
+  \item Examples: perception, language understanding, pattern recognition, decision-making and problem solving.
+  \item In business, a practical definition is simpler: AI helps convert data and context into better decisions or actions.
+\end{itemize}
+\takeaway{The central question is not ``Is it intelligent?'' but ``Which decision process does it improve?''}
+\end{frame}
+
+\begin{frame}
+\slideTitle{AI, Machine Learning, Deep Learning and Foundation Models}
+\textbf{Plain-language view}
+\begin{itemize}
+  \item AI: the big umbrella.
+  \item Machine learning: learn patterns from data.
+  \item Deep learning: neural networks with many layers.
+  \item Foundation models: large general models adapted to many tasks.
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: AI, ML and Deep Learning Relationship}
+\sourcefigure{figures_pdf/ai_ml_dl.pdf}{0.53}{AI-ML-DL.svg, Wikimedia Commons, CC BY-SA 4.0.}
+\vspace{-0.45cm}
+{\scriptsize\textit{Lecture point:} This hierarchy helps beginners avoid mixing up the umbrella field, learning methods and deep neural networks.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{Five Abilities of Modern AI}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Ability & Simple meaning & Finance example \\
+\midrule
+Perceive & read inputs & parse PDFs and tables \\
+Predict & estimate future/label & default probability \\
+Generate & create content & draft client report \\
+Reason & connect steps & explain portfolio risk \\
+Act & use tools/workflows & rebalance proposal \\
+\bottomrule
+\end{tabular}
+\end{center}
+\mainidea{Modern AI is powerful because these abilities can be combined in one workflow.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Machine Learning as Learning from Examples}
+\mainidea{Machine learning is like teaching by examples instead of writing every rule by hand.}
+\begin{itemize}
+  \item Traditional programming: human writes rules, computer follows rules.
+  \item Machine learning: human provides examples and objectives, computer learns patterns.
+  \item Example: instead of manually listing every fraud pattern, we train on historical transactions.
+\end{itemize}
+\finlens{This is useful in finance because many patterns are too complex or too fast-changing for manual rules alone.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Machine Learning as Function Approximation}
+\begin{itemize}
+  \item A compact mathematical view:
+\end{itemize}
+\[
+    f_\theta(x) \approx y.
+\]
+\begin{itemize}
+  \item Input $x$: image, text, customer profile, transaction, market features or portfolio state.
+  \item Output $y$: label, forecast, recommendation, action or generated content.
+  \item Learning means choosing parameters $\theta$ so that $f_\theta$ works well on unseen data.
+\end{itemize}
+\techlens{Most practical ML problems are about selecting the right inputs, objective function, validation design and deployment controls.}
+\end{frame}
+
+
+
+\begin{frame}
+\slideTitle{Traditional System vs ML}
+\centering
+\includegraphics[width=0.93\textwidth]{figures_pdf/Traditional_vs_ML.pdf}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Data, Objective, Optimization, Validation}
+\begin{itemize}
+  \item A model is not trained from data alone.
+  \item Four ingredients matter:
+  \begin{enumerate}
+    \item \keyterm{Data}: what the model can learn from.
+    \item \keyterm{Objective}: what the model is rewarded for doing.
+    \item \keyterm{Optimization}: how the model parameters are fitted.
+    \item \keyterm{Validation}: how we know it works outside training data.
+  \end{enumerate}
+\end{itemize}
+\[
+\text{Data} + \text{Objective} + \text{Optimization} + \text{Validation} \Rightarrow \text{Useful model}.
+\]
+\end{frame}
+
+\begin{frame}
+\slideTitle{Three Main Learning Paradigms}
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Paradigm & Everyday analogy & Typical output & Finance example \\
+\midrule
+Supervised & answer key & prediction & default probability \\
+Unsupervised & grouping & clusters/factors & client segmentation \\
+Reinforcement & trial and feedback & policy & execution strategy \\
+\bottomrule
+\end{tabular}
+\end{center}
+\mainidea{The paradigm depends on what kind of feedback the system receives: labels, structure, or rewards.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Supervised Learning: Learning with an Answer Key}
+\begin{itemize}
+  \item Training data contains both inputs and known answers:
+\end{itemize}
+\[
+\mathcal{D}=\{(x_i,y_i)\}_{i=1}^n.
+\]
+\begin{itemize}
+  \item Regression predicts a number: return, volatility, loss, revenue.
+  \item Classification predicts a category: fraud/not fraud, churn/not churn, approve/reject.
+  \item The model is useful only if it generalizes to new examples.
+\end{itemize}
+\finlens{Credit scoring, fraud detection and customer churn prediction are classic supervised-learning problems.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Supervised Learning Examples}
+\scriptsize
+\begin{center}
+\begin{tabular}{p{0.23\linewidth}p{0.29\linewidth}p{0.30\linewidth}p{0.11\linewidth}}
+\toprule
+Task & Input $x$ & Target $y$ & Output type \\
+\midrule
+Fraud detection & transaction amount, merchant, device, location & fraud label & probability \\
+Credit risk & borrower profile, income, repayment history & default event & probability \\
+Equity factor model & valuation, quality, momentum features & future return rank & score \\
+Client churn & activity, holdings, service history & churn/not churn & class \\
+\bottomrule
+\end{tabular}
+\end{center}
+\takeaway{The same learning framework appears in very different financial products.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Loss Function and Empirical Risk}
+\begin{itemize}
+  \item A model is trained by minimizing average loss on training data:
+\end{itemize}
+\[
+\hat{\theta}=\arg\min_\theta \frac{1}{n}\sum_{i=1}^{n} L(f_\theta(x_i),y_i)+\lambda\Omega(\theta).
+\]
+\begin{itemize}
+  \item $L$ measures prediction error.
+  \item $\Omega$ regularizes model complexity.
+  \item $\lambda$ controls the trade-off between fit and simplicity.
+\end{itemize}
+\techlens{Changing the loss function changes what the model optimizes. In finance, optimizing the wrong proxy can create the wrong behavior.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Overfitting: The Most Important Warning}
+\mainidea{Overfitting means the model memorizes noise instead of learning a repeatable pattern.}
+\begin{itemize}
+  \item A model can look excellent on historical data and fail in the future.
+  \item Finance is especially vulnerable because market signals are weak and noisy.
+  \item More complexity is not always better; sometimes it simply gives noise a better suit.
+\end{itemize}
+\[
+\mathbb{E}[(\hat{f}(x)-y)^2] = \text{Bias}^2 + \text{Variance} + \text{Noise}.
+\]
+\takeaway{The real exam is not training performance; it is out-of-sample performance.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: Underfitting vs. Overfitting}
+\sourcefigure{figures_pdf/bias_variance.pdf}{0.96}{scikit-learn documentation, Underfitting vs. Overfitting example, BSD-3-Clause.}
+\vspace{-0.04cm}
+{\scriptsize\textit{Lecture point:} The best model is not the most complex one; it is the one that generalizes.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{Train, Validation and Test Sets}
+\begin{itemize}
+  \item \keyterm{Training set}: fit the model.
+  \item \keyterm{Validation set}: tune hyperparameters and select models.
+  \item \keyterm{Test set}: estimate final out-of-sample performance.
+  \item In time-series finance, random splitting can leak future information.
+  \item Use chronological split, walk-forward validation or purged cross-validation.
+\end{itemize}
+\end{frame}
+% --------------------------------------------------
+
+
+
+
+\begin{frame}
+\slideTitle{Unsupervised Learning: Finding Structure Without Labels}
+\mainidea{Unsupervised learning is like organizing a messy library without a catalog. The system looks for natural structure.}
+\begin{itemize}
+  \item Data has no labels:
+\end{itemize}
+\[
+\mathcal{D}=\{x_i\}_{i=1}^{n}.
+\]
+\begin{itemize}
+  \item Common methods: K-means, hierarchical clustering, PCA and autoencoders.
+  \item Finance examples: market regimes, client segmentation, peer grouping and style factor extraction.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\slideTitle{K-Means Clustering}
+\begin{itemize}
+  \item K-means partitions observations into $K$ clusters.
+  \item It minimizes within-cluster squared distance:
+\end{itemize}
+\[
+\min_{C_1,\ldots,C_K}\sum_{k=1}^K \sum_{x_i\in C_k} \|x_i-\mu_k\|^2.
+\]
+\begin{itemize}
+  \item Plain example: group customers by investment behavior.
+  \item Finance example: cluster stocks by return correlation, valuation profile or risk behavior.
+\end{itemize}
+\techlens{Clusters are descriptions, not truth. They can change when regimes change or when the feature design changes.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: K-Means on Handwritten Digits}
+\sourcefigure{figures_pdf/kmeans_digits.pdf}{0.72}{scikit-learn documentation, K-Means clustering on digits, BSD-3-Clause.}
+\vspace{-0.04cm}
+{\scriptsize\textit{Lecture point:} Clustering creates useful structure, but the structure depends on the representation and distance metric.}
+\end{frame}
+% --------------------------------------------------
+
+
+
+
+
+\begin{frame}
+\slideTitle{Reinforcement Learning: Learning by Feedback}
+\mainidea{Reinforcement learning is learning by trying actions and receiving rewards. It is closer to training a player than fitting a spreadsheet formula.}
+\begin{itemize}
+  \item An agent observes state $s_t$, takes action $a_t$ and receives reward $r_t$.
+  \item Objective: learn a policy $\pi(a|s)$ that maximizes cumulative reward.
+\end{itemize}
+\[
+\max_\pi \; \mathbb{E}_\pi\left[\sum_{t=0}^{T}\gamma^t r_t\right].
+\]
+\finlens{Finance examples include order execution, market making, dynamic allocation and hedging.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{Why Reinforcement Learning Is Hard in Finance}
+\begin{itemize}
+  \item Feedback is noisy: good decisions can have bad short-term outcomes.
+  \item Markets are non-stationary: yesterday's policy may fail tomorrow.
+  \item Exploration is expensive: real trading mistakes cost money.
+  \item The agent may affect the environment through its own trades.
+\end{itemize}
+\takeaway{RL is conceptually attractive in finance, but deployment needs simulation, constraints and human oversight.}
+\end{frame}
+% --------------------------------------------------
+\begin{frame}
+\slideTitle{Demo: Reinforcement Learning}
+\footnotesize
+\begin{beamercolorbox}[wd=\linewidth,rounded=true,sep=0.12cm]{visualbox}\scriptsize\textbf{Youtube: https://www.youtube.com/watch?v=Lt-KLtkDlh8} \end{beamercolorbox}
+\centering
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{Neural Networks}
+\mainidea{A neural network is a flexible function made by stacking many simple transformations.}
+\begin{itemize}
+  \item Each layer transforms the previous representation:
+\end{itemize}
+\[
+    h^{(l)}=\sigma(W^{(l)}h^{(l-1)}+b^{(l)}).
+\]
+\begin{itemize}
+  \item Early layers learn basic patterns; later layers learn task-specific representations.
+  \item Deep learning became powerful because of data, GPUs, better optimization and open-source tooling.
+\end{itemize}
+\finlens{In finance, deep models can help with text, documents and high-dimensional data, but weak market signals still require careful validation.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: A Simple Neural Network Topology}
+\sourcefigure{figures_pdf/artificial_neural_network.pdf}{0.66}{Cburnett, Wikimedia Commons, CC BY-SA 3.0 or GFDL.}
+\vspace{-0.04cm}
+{\scriptsize\textit{Lecture point:} A neural network stacks simple units into layers so the whole system can approximate complex functions.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{CNN, RNN and LSTM: Before Transformers}
+\begin{itemize}
+  \item \keyterm{CNN}: captures local spatial patterns; originally dominant in image tasks.
+  \item \keyterm{RNN}: processes sequences step by step; useful for language and time series.
+  \item \keyterm{LSTM}: improves long-range sequence learning through gated memory.
+  \item These architectures prepared the ground for modern sequence models.
+\end{itemize}
+\takeaway{Architecture matters because it determines what patterns the model can learn efficiently.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Attention Mechanism: The Key Intuition}
+\mainidea{Attention lets the model decide which parts of the input are relevant to each other.}
+\begin{itemize}
+  \item In a sentence, a word may need information from another word far away.
+  \item In a report, a conclusion may depend on numbers in a table several pages earlier.
+  \item Attention creates a dynamic relevance map across tokens.
+\end{itemize}
+\finlens{For financial documents, attention helps connect terms, definitions, tables, footnotes and risk disclosures.}
+\end{frame}
+
+
+
+\begin{frame}
+\slideTitle{Transformers}
+\begin{itemize}
+  \item Transformers are built from self-attention, feed-forward layers and normalization.
+  \item They support parallel training over long sequences.
+  \item They became the dominant architecture for language and increasingly for vision, audio, code and multimodal reasoning.
+  \item Most modern LLMs are transformer-based or transformer-derived systems.
+\end{itemize}
+\visual{A clean transformer block illustration with token embeddings, self-attention and feed-forward layers.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: Transformer Architecture}
+\sourcefigure{figures_pdf/transformer_architecture.pdf}{0.52}{Vaswani et al. (2017), Attention Is All You Need, NeurIPS paper Figure 1.}
+\vspace{-0.04cm}
+{\scriptsize\textit{Lecture point:} Transformers combine attention, feed-forward layers, residual connections and positional information.}
+\end{frame}
+% --------------------------------------------------
+
+
+
+
+\begin{frame}
+\slideTitle{Large Language Models}
+\mainidea{An LLM learns language by predicting the next token at massive scale. Simple training objective; surprisingly rich behavior.}
+\begin{itemize}
+  \item Pretraining objective:
+\end{itemize}
+\[
+\max_\theta \sum_t \log p_\theta(x_t|x_{<t}).
+\]
+\begin{itemize}
+  \item Pretraining produces broad language and knowledge representations.
+  \item Instruction tuning makes the model more helpful.
+  \item Tool use and retrieval connect the model to external systems and fresh data.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+\slideTitle{Foundation Models: The New AI Layer}
+\begin{itemize}
+  \item Foundation models are trained broadly and adapted to many downstream tasks.
+  \item They shift development from task-specific modeling to prompt, retrieval, tool and workflow design.
+  \item They can support language, code, image, audio, video and structured data.
+  \item In enterprise finance, the key architecture is often a controlled workflow around a foundation model, not the raw model alone.
+\end{itemize}
+\takeaway{Foundation models are general engines; financial value comes from connecting them to trusted data and responsible processes.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Multimodal AI}
+\begin{itemize}
+  \item Multimodal models process combinations of text, image, audio, video and structured data.
+  \item Finance examples:
+  \begin{itemize}
+    \item read PDFs, charts and tables;
+    \item extract data from factsheets and reports;
+    \item analyze earnings-call audio and transcripts;
+    \item support advisor-client conversations with document grounding.
+  \end{itemize}
+\end{itemize}
+\visual{Different inputs such as PDF, chart, table, voice and news flowing into a unified model, then producing a financial decision-support output.}
+\end{frame}
+
+
+
+
+\begin{frame}
+\slideTitle{RAG: Retrieval-Augmented Generation}
+\mainidea{RAG gives the model a trusted library before asking it to answer.}
+\begin{enumerate}
+  \item Parse and index documents.
+  \item Retrieve relevant chunks.
+  \item Generate answer with source references.
+  \item Evaluate faithfulness and completeness.
+\end{enumerate}
+\finlens{RAG is central in finance because many answers must be traceable to policies, reports, contracts, fund documents or regulations.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: RAG Architecture}
+\sourcefigure{figures_pdf/rag_architecture.pdf}{0.88}{Fan et al. (2024), \textit{A Survey on RAG Meeting LLMs: Towards Retrieval-Augmented Large Language Models}, Figure 3.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{RAG: What Can Go Wrong?}
+\begin{itemize}
+  \item Retrieval failure: the right document was not found.
+  \item Chunking failure: the answer needs context split across chunks.
+  \item Generation failure: the model misreads or over-interprets retrieved text.
+  \item Evaluation failure: the answer sounds plausible but is not fully supported.
+\end{itemize}
+\techlens{A production RAG system needs document lineage, permissions, citation checks, evaluation sets and monitoring.}
+\end{frame}
+% --------------------------------------------------
+
+
+
+\begin{frame}
+\slideTitle{AI Agents}
+\mainidea{An agent is not just a model that answers; it can plan, use tools, observe results and revise.}
+\[
+\text{Goal} \rightarrow \text{Plan} \rightarrow \text{Tool Use} \rightarrow \text{Observation} \rightarrow \text{Revision}.
+\]
+\begin{itemize}
+  \item Agents are useful when a task requires multi-step execution rather than a single response.
+  \item Examples: research assistant, coding assistant, portfolio diagnostic assistant.
+  \item Finance needs permissioning, logging, sandboxing and approval gates.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+\slideTitle{World Models}
+\mainidea{A world model learns how an environment evolves, so an agent can imagine consequences before acting.}
+\begin{itemize}
+  \item It supports counterfactual reasoning: ``What may happen if I take this action?''
+  \item Compared with a text-only LLM, a world model focuses more on state, dynamics, action and simulation.
+  \item It is especially important for agents that need to plan in changing environments.
+\end{itemize}
+\visual{An agent trying actions in a simulated environment before taking real-world actions.}
+\end{frame}
+
+
+
+\begin{frame}
+\slideTitle{World Models: Mathematical View}
+\begin{itemize}
+  \item State: $s_t$; action: $a_t$; observation: $o_t$; reward: $r_t$.
+  \item A world model approximates transition and observation structure:
+\end{itemize}
+\[
+    \hat{p}(s_{t+1}, o_{t+1}, r_t \mid s_t, a_t).
+\]
+\begin{itemize}
+  \item Planning can then be performed in imagination:
+\end{itemize}
+\[
+    \max_{a_{0:T}} \; \mathbb{E}_{\hat{p}}\left[\sum_{t=0}^T \gamma^t r_t\right].
+\]
+\end{frame}
+
+\begin{frame}
+\slideTitle{World Models in Finance: Analogy and Limits}
+\begin{itemize}
+  \item Finance has an implicit world-model problem: investors reason about regimes and consequences.
+  \item Potential uses:
+  \begin{itemize}
+    \item portfolio stress testing;
+    \item scenario generation;
+    \item execution simulation;
+    \item synthetic market environments for strategy testing.
+  \end{itemize}
+  \item Major limitation: financial markets are adaptive systems; the model can change the world it tries to model.
+\end{itemize}
+\takeaway{A financial world model is useful only if it is treated as a scenario engine, not a crystal ball.}
+\end{frame}
+% --------------------------------------------------
+
+
+\begin{frame}
+\slideTitle{Evaluation of Modern AI Systems}
+\begin{itemize}
+  \item Classic ML evaluation: accuracy, AUC, RMSE, Sharpe ratio and cross-validation.
+  \item Generative AI evaluation also needs:
+  \begin{itemize}
+    \item factuality and citation faithfulness;
+    \item reasoning correctness;
+    \item tool-use success rate;
+    \item latency and cost;
+    \item safety and compliance.
+  \end{itemize}
+\end{itemize}
+\finlens{For finance, evaluation should be linked to the business decision being supported.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{AI Governance in Finance}
+\begin{itemize}
+  \item Financial AI systems need more than model accuracy.
+  \item Key controls:
+  \begin{itemize}
+    \item data lineage and access control;
+    \item model validation and monitoring;
+    \item explainability and audit trail;
+    \item human approval for regulated or high-impact decisions;
+    \item cybersecurity and privacy protection.
+  \end{itemize}
+\end{itemize}
+\takeaway{A good AI system should fail safely and leave evidence.}
+\end{frame}
+
+% --------------------------------------------------
+\section{Part II: AI Applications in FinTech}
+
+\begin{frame}
+\slideTitle{Part II: AI Applications in FinTech}
+\vspace{1.0cm}
+\begin{center}
+{\Huge AI Applications in FinTech}\\[0.35cm]
+{\Large From automation to investment decision intelligence}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\slideTitle{FinTech: Where AI Creates Value}
+\begin{itemize}
+  \item \keyterm{Scale}: serve more clients at lower marginal cost.
+  \item \keyterm{Speed}: automate document reading, monitoring and reporting.
+  \item \keyterm{Consistency}: reduce manual variation in decisions.
+  \item \keyterm{Personalization}: adapt products and advice to client constraints.
+  \item \keyterm{Insight}: extract signals from unstructured and high-dimensional data.
+\end{itemize}
+\mainidea{AI matters when it improves a workflow, not when it is merely attached to a product name.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Major AI Use Cases in Financial Services}
+\scriptsize
+\begin{center}
+\begin{tabular}{p{0.23\linewidth}p{0.31\linewidth}p{0.32\linewidth}}
+\toprule
+Area & AI task & Example output \\
+\midrule
+Customer service & summarization and dialogue & advisor copilot \\
+Risk and fraud & anomaly detection & suspicious transaction alert \\
+Credit & supervised prediction & default probability \\
+Compliance & document review & policy breach flag \\
+Research & retrieval and coding & factor test memo \\
+WealthTech & optimization and personalization & portfolio proposal \\
+Trading & sequential decision & execution schedule \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Why Finance Is Different}
+\begin{itemize}
+  \item Financial decisions are high-stakes and regulated.
+  \item Data is noisy, non-stationary and often proprietary.
+  \item Backtests can be misleading without strong controls.
+  \item Model errors can create financial loss, conduct risk or regulatory risk.
+  \item Therefore the AI workflow must combine automation with governance.
+\end{itemize}
+\takeaway{In finance, ``move fast and break things'' is not a strategy. It is an incident report waiting for a date.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{From Digital Finance to AI-Native Finance}
+\begin{itemize}
+  \item \keyterm{Digital finance}: online forms, dashboards, APIs and rule-based automation.
+  \item \keyterm{AI-assisted finance}: models support search, summarization, prediction and monitoring.
+  \item \keyterm{AI-native finance}: agents coordinate data, models, tools and approvals across an end-to-end process.
+\end{itemize}
+\mainidea{The next frontier is not just a chatbot. It is workflow intelligence.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Robo-Advisory: Core Idea}
+\mainidea{Robo-advisory converts client information into investment recommendations through a structured, repeatable process.}
+\begin{enumerate}
+  \item Client onboarding and risk profiling.
+  \item Goal and constraint collection.
+  \item Strategic asset allocation.
+  \item Portfolio implementation.
+  \item Monitoring, rebalancing and reporting.
+\end{enumerate}
+\finlens{The value comes from systematic advice, not from pretending human judgment is unnecessary.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: AI-Driven Robo-Advisory Roadmap}
+\sourcefigure{figures_pdf/robo_advisor_roadmap.pdf}{0.88}{Feng, Li and Liu (2025), \textit{Robo-Advisors Beyond Automation}, Figure 2.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{Risk Profiling}
+\begin{itemize}
+  \item Risk profiling estimates a client's ability and willingness to take risk.
+  \item Inputs may include age, income, wealth, horizon, liquidity needs, investment knowledge and loss tolerance.
+  \item Common output: a risk score or risk category.
+  \item AI can assist by detecting inconsistent answers, explaining trade-offs and mapping goals to portfolios.
+\end{itemize}
+\techlens{Risk profiling is partly statistical and partly behavioral. The hardest part is not the score; it is suitability and explanation.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Modern Portfolio Theory: Intuition}
+\mainidea{Portfolio construction is about combining assets so the whole portfolio behaves better than isolated holdings.}
+\begin{itemize}
+  \item Return matters, but risk and correlation also matter.
+  \item Diversification works when assets do not move perfectly together.
+  \item A portfolio is not a shopping basket; weights determine exposures.
+\end{itemize}
+\finlens{Robo-advisory turns these ideas into scalable portfolio recommendations under client constraints.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: Efficient Frontier}
+\sourcefigure{figures_pdf/efficient_frontier_cml.pdf}{0.72}{Wikimedia Commons, Capital market line of CAPM, used in Modern Portfolio Theory article.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{Modern Portfolio Theory: Formula}
+\begin{itemize}
+  \item For portfolio weights $w$, expected return $\mu$ and covariance $\Sigma$:
+\end{itemize}
+\[
+    \mathbb{E}[r_p]=w^\top\mu, \qquad \sigma_p^2=w^\top\Sigma w.
+\]
+\begin{itemize}
+  \item Mean-variance optimization balances return and risk:
+\end{itemize}
+\[
+\max_w \; w^\top\mu - \frac{\lambda}{2}w^\top\Sigma w.
+\]
+\techlens{Real implementation needs robust estimates, constraints, trading costs and monitoring. The elegant equation is the start, not the product.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Minimum Variance Portfolio}
+\begin{itemize}
+  \item The minimum variance portfolio minimizes total portfolio variance:
+\end{itemize}
+\[
+\min_w \; w^\top \Sigma w \quad \text{s.t.} \quad \mathbf{1}^\top w=1.
+\]
+\begin{itemize}
+  \item With two risky assets, the optimal weight in asset A is:
+\end{itemize}
+\[
+ w_A^*=\frac{\mathrm{Var}(r_B)-\mathrm{Cov}(r_A,r_B)}{\mathrm{Var}(r_A)+\mathrm{Var}(r_B)-2\mathrm{Cov}(r_A,r_B)}.
+\]
+\takeaway{Diversification is driven by variance, covariance and correlation.}
+\end{frame}
+% --------------------------------------------------
+
+
+\begin{frame}
+\slideTitle{Practical Portfolio Constraints}
+\begin{itemize}
+  \item Long-only or limited shorting.
+  \item Asset class, sector, region and issuer concentration limits.
+  \item Turnover and transaction-cost constraints.
+  \item Liquidity and minimum-trade-size constraints.
+  \item Tax and account-specific restrictions.
+  \item Compliance and suitability restrictions.
+\end{itemize}
+\finlens{Constraints are not annoying details. They are how a theoretical portfolio becomes an investable portfolio.}
+\end{frame}
+% --------------------------------------------------
+
+
+
+\begin{frame}
+\slideTitle{Rebalancing}
+\begin{itemize}
+  \item Rebalancing restores a portfolio toward target allocation.
+  \item Common rules:
+  \begin{itemize}
+    \item calendar-based: monthly or quarterly;
+    \item threshold-based: rebalance if drift exceeds tolerance;
+    \item optimization-based: trade only when benefits exceed costs.
+  \end{itemize}
+  \item AI can help forecast drift, costs and tax consequences.
+\end{itemize}
+\takeaway{Rebalancing is a trade-off between discipline, cost, tax and risk control.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Lab Demo: Robo Advisor Journey}
+\footnotesize
+\begin{beamercolorbox}[wd=\linewidth,rounded=true,sep=0.12cm]{visualbox}\scriptsize\textbf{Link: https://portal.aqumon.com/home/} \end{beamercolorbox}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{WealthTech Product Matrix}
+\begin{itemize}
+  \item Digital onboarding and risk profiling.
+  \item Portfolio proposal and suitability check.
+  \item Goal-based investing.
+  \item Rebalancing and tax-aware trading.
+  \item Portfolio analytics, stress testing and performance attribution.
+  \item Advisor copilot and client communication.
+  \item Compliance monitoring and audit trail.
+\end{itemize}
+\mainidea{WealthTech is a system of connected services, not a single algorithm.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Direct Indexing: Plain-English View}
+\mainidea{Direct indexing means owning the individual stocks in an index-like portfolio instead of buying one index fund.}
+\begin{itemize}
+  \item The investor still aims to track a benchmark.
+  \item But individual holdings allow more customization.
+  \item Examples:
+  \begin{itemize}
+    \item exclude restricted securities;
+    \item apply ESG or thematic tilts;
+    \item control sector or factor exposures;
+    \item harvest tax losses at individual security or lot level.
+  \end{itemize}
+\end{itemize}
+\visual{Benchmark index decomposed into individual stock tiles, then personalized exclusions and tilts.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: Direct Indexing Workflow}
+\sourcefigure{figures_pdf/direct_indexing_workflow.pdf}{0.88}{BNY Pershing, \textit{The Democratization of Direct Indexing}, direct-indexing workflow infographic.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{Direct Indexing as an Optimization Problem}
+\begin{itemize}
+  \item Let $w$ be portfolio weights and $w_b$ benchmark weights.
+  \item Tracking error objective:
+\end{itemize}
+\[
+\min_w \; (w-w_b)^\top\Sigma(w-w_b)
+\]
+\begin{itemize}
+  \item Practical version adds costs and constraints:
+\end{itemize}
+\[
+\min_w \; \mathrm{TE}^2(w)+\lambda_1\mathrm{Turnover}(w)+\lambda_2\mathrm{TaxCost}(w)
+\]
+\[
+\text{s.t. } \mathbf{1}^\top w=1,\quad 0\leq w_i\leq u_i,\quad \text{client constraints}.
+\]
+\end{frame}
+
+\begin{frame}
+\slideTitle{Tax-Loss Harvesting: Plain-English View}
+\mainidea{Tax-loss harvesting realizes selected investment losses today to reduce tax, while trying to keep similar market exposure.}
+\begin{enumerate}
+  \item Identify tax lots with unrealized losses.
+  \item Sell selected lots.
+  \item Buy replacement exposures to maintain risk profile.
+  \item Avoid wash-sale or equivalent restrictions where applicable.
+  \item Track realized gains/losses and future cost basis.
+\end{enumerate}
+\finlens{Tax rules vary by jurisdiction; implementation must be localized and reviewed by qualified tax professionals.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Visual Example: Tax-Loss Harvesting Process}
+\sourcefigure{figures_pdf/tax_loss_harvesting_process.pdf}{0.88}{Mellon Investments Corporation, \textit{Direct Indexing: The Basics of Tax-Loss Harvesting}, process graphic.}
+\end{frame}
+
+
+\begin{frame}
+\slideTitle{Tax Harvesting: Decision Logic}
+\begin{itemize}
+  \item For tax lot $i$, define unrealized loss:
+\end{itemize}
+\[
+L_i = \max(0, \mathrm{CostBasis}_i - \mathrm{MarketValue}_i).
+\]
+\begin{itemize}
+  \item A trade is attractive only if expected tax benefit exceeds costs and tracking-error impact:
+\end{itemize}
+\[
+\mathrm{NetBenefit}_i \approx \tau L_i - \mathrm{TradingCost}_i - \Delta \mathrm{TE}_i - \mathrm{OperationalPenalty}_i.
+\]
+\techlens{This is an optimization problem with tax lots, replacement securities, benchmark risk, trading costs and client constraints.}
+\end{frame}
+% --------------------------------------------------
+
+
+\begin{frame}
+\slideTitle{Direct Indexing + Tax Harvesting + AI}
+\begin{itemize}
+  \item Direct indexing creates more tax lots and more customization degrees of freedom.
+  \item Tax harvesting searches across many lots, securities and replacement baskets.
+  \item AI can support:
+  \begin{itemize}
+    \item personalized constraint extraction from client documents;
+    \item opportunity ranking;
+    \item replacement-security selection;
+    \item explanation of after-tax trade-offs;
+    \item monitoring and audit trail.
+  \end{itemize}
+\end{itemize}
+\takeaway{The product value comes from personalization at scale, not from a single clever trade.}
+\end{frame}
+
+
+
+\begin{frame}
+\slideTitle{AI Agents in an Investment Firm}
+\mainidea{A real investment process involves many roles. Agent design can mirror this organizational structure.}
+\begin{center}
+\scriptsize
+\begin{tabular}{lll}
+\toprule
+Role & Main question & Typical output \\
+\midrule
+Macro analyst & What is the regime? & regime view \\
+Quant researcher & Does signal work? & research memo \\
+Portfolio manager & How to implement? & target weights \\
+Risk manager & What can go wrong? & risk challenge \\
+Trader & How to trade? & execution plan \\
+Compliance officer & Is it allowed? & approval/checklist \\
+Committee secretary & What was decided? & audit record \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}
+\slideTitle{Agent Role: Macro Analyst}
+\begin{itemize}
+  \item Monitors macro data, central bank communication, inflation, growth and liquidity conditions.
+  \item Uses retrieval over research reports, official data and market indicators.
+  \item Produces structured regime views:
+\end{itemize}
+\[
+\text{Regime} \in \{\text{Growth Up},\text{Growth Down}\}\times\{\text{Inflation Up},\text{Inflation Down}\}.
+\]
+\begin{itemize}
+  \item Output should include evidence, confidence and changes from previous view.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Agent Role: Quant Researcher}
+\begin{itemize}
+  \item Converts investment hypotheses into testable factors.
+  \item Pulls data, cleans data and checks survivorship and look-ahead bias.
+  \item Runs IC analysis, robustness tests and parameter sweeps.
+  \item Produces research memo with code, assumptions and performance diagnostics.
+\end{itemize}
+\finlens{This is where AI can speed up research, but also where bad automation can create beautiful nonsense.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Agent Role: Portfolio Manager}
+\begin{itemize}
+  \item Translates signals into portfolio weights.
+  \item Balances expected return, risk, turnover, liquidity, concentration and client constraints.
+  \item Evaluates whether proposed trades are consistent with mandate and market view.
+  \item Escalates unusual or high-impact changes to the investment committee.
+\end{itemize}
+\takeaway{The portfolio manager agent should not only ask ``What has alpha?'' but also ``Can we implement it responsibly?''}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Agent Role: Risk Manager}
+\begin{itemize}
+  \item Reviews exposures, drawdown, stress scenarios and tail risk.
+  \item Challenges the strategy assumptions.
+  \item Checks whether backtest risk is concentrated in a small number of episodes.
+  \item Requires kill-switches, monitoring thresholds and post-trade review.
+\end{itemize}
+\techlens{A strong risk agent should look for hidden beta, crowding, liquidity traps, factor concentration and regime sensitivity.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Agent Role: Compliance Officer}
+\begin{itemize}
+  \item Checks suitability, mandate restrictions and disclosure language.
+  \item Reviews whether AI-generated analysis is supported by evidence.
+  \item Prevents misleading claims such as unsupported ``AI alpha'' marketing.
+  \item Maintains audit trail: prompts, retrieved sources, model outputs, approvals and final actions.
+\end{itemize}
+\takeaway{Compliance is not the enemy of innovation. It is the seat belt that lets the car go faster safely.}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Agentic Investment Committee}
+\begin{enumerate}
+  \item Researcher proposes signal.
+  \item Risk agent challenges hidden exposures.
+  \item Portfolio agent proposes implementation.
+  \item Compliance agent checks mandate and disclosure.
+  \item Human committee approves, rejects or requests revision.
+\end{enumerate}
+\mainidea{Agents do not replace accountability; they structure debate and preserve evidence.}
+\takeaway{The system should record dissent and rationale, not only the final output.}
+\end{frame}
+% --------------------------------------------------
+
+
+\begin{frame}
+\slideTitle{From Simple Investment Idea to Strategy}
+\begin{center}
+\Large\textit{``Buy companies with improving fundamentals, reasonable valuation and strong cash conversion.''}
+\end{center}
+\vspace{0.2cm}
+\begin{itemize}
+  \item Convert plain language into measurable signals:
+  \begin{itemize}
+    \item earnings growth;
+    \item free cash flow growth;
+    \item return on invested capital;
+    \item valuation multiples;
+    \item balance sheet quality.
+  \end{itemize}
+  \item Then test whether the signal predicts future returns after costs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Strategy Research Pipeline}
+\begin{enumerate}
+  \item Define investment universe.
+  \item Define signal and data sources.
+  \item Clean data and avoid biases.
+  \item Analyze factor IC and monotonicity.
+  \item Tune parameters and rebalance frequency.
+  \item Construct portfolio weights.
+  \item Backtest with realistic costs and constraints.
+  \item Attribute performance and risk.
+  \item Prepare deployment and monitoring.
+\end{enumerate}
+\visual{Pipeline from idea to data, factor test, optimization, backtest, attribution and deployment.}
+\end{frame}
+
+
+
+
+\begin{frame}
+\slideTitle{AI Agent for Investment Research Implementation}
+\begin{itemize}
+  \item User gives simple idea in natural language.
+  \item Agent converts idea into structured research plan.
+  \item Data agent retrieves and validates data.
+  \item Quant agent creates factors and runs IC analysis.
+  \item Optimization agent builds portfolios under constraints.
+  \item Backtest agent evaluates costs, risk and performance.
+  \item Attribution agent explains return drivers.
+  \item Compliance agent checks disclosures and suitability.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\slideTitle{Summary}
+\begin{itemize}
+  \item AI evolved from rule-based systems to machine learning, deep learning, foundation models, agents and world models.
+  \item FinTech applications require prediction, generation, reasoning, planning and governance.
+  \item Robo-advisory, direct indexing and tax harvesting are examples of algorithmic personalization at scale.
+  \item Agentic workflows can mimic the decision process of an investment firm, but must preserve accountability.
+  \item A sound investment AI workflow goes from idea to data, IC, tuning, weighting, backtesting, attribution and monitoring.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\slideTitle{Questions?}
+\centering
+\includegraphics[width=0.36\textwidth]{figures_pdf/wechat_group.pdf}
+\end{frame}
+
+
+
+
+\begin{frame}
+\slideTitle{References and Further Reading}
+\scriptsize
+\begin{itemize}
+  \item Turing, A. M. (1950), ``Computing Machinery and Intelligence.''
+  \item Vaswani et al. (2017), ``Attention Is All You Need.''
+  \item Sutton and Barto, ``Reinforcement Learning: An Introduction.''
+  \item Murphy, ``Machine Learning: A Probabilistic Perspective.''
+  \item Goodfellow, Bengio and Courville, ``Deep Learning.''
+  \item Research and industry materials on foundation models, RAG, AI agents and world models.
+  \item World Bank, ``Robo-Advisors: Investing through Machines.''
+  \item SEC, robo-adviser guidance and fiduciary duty materials.
+  \item Materials from major asset managers on direct indexing and tax-loss harvesting.
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}

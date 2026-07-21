@@ -7,7 +7,7 @@
     <div class="news-list">
       {{ range $items }}
         <article class="news-item">
-          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <h2><a href="{{ with .Params.link }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}">{{ .Title }}</a></h2>
           {{ with .Params.summary }}
             <p class="news-summary">{{ . | markdownify }}</p>
           {{ end }}
