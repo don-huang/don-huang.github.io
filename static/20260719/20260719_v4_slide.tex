@@ -1,0 +1,1479 @@
+\documentclass[UTF8,aspectratio=169,11pt]{ctexbeamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,multicol}
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{natbib}
+
+\graphicspath{{figures/}}
+
+\definecolor{aqblue}{RGB}{26,70,125}
+\definecolor{aqgold}{RGB}{245,172,49}
+\definecolor{aqgreen}{RGB}{34,132,93}
+\definecolor{aqred}{RGB}{185,62,55}
+\definecolor{aqgray}{RGB}{85,92,105}
+\definecolor{lightblue}{RGB}{236,244,255}
+\definecolor{lightgold}{RGB}{255,248,232}
+\definecolor{lightred}{RGB}{255,241,240}
+\definecolor{lightgreen}{RGB}{238,249,242}
+
+\setbeamercolor{palette primary}{bg=aqblue,fg=white}
+\setbeamercolor{palette secondary}{bg=aqblue!82!black,fg=white}
+\setbeamercolor{frametitle}{bg=aqblue,fg=white}
+\setbeamercolor{title}{fg=aqblue}
+\setbeamercolor{structure}{fg=aqblue}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\hypersetup{colorlinks=true,linkcolor=aqblue,urlcolor=aqblue}
+
+\newtcolorbox{keybox}[1]{colback=lightblue,colframe=aqblue,boxrule=.7pt,arc=1.5mm,title=#1,left=1.5mm,right=1.5mm,top=1mm,bottom=1mm}
+\newtcolorbox{riskbox}[1]{colback=lightred,colframe=aqred,boxrule=.7pt,arc=1.5mm,title=#1,left=1.5mm,right=1.5mm,top=1mm,bottom=1mm}
+\newtcolorbox{casebox}[1]{colback=lightgold,colframe=aqgold!85!black,boxrule=.7pt,arc=1.5mm,title=#1,left=1.5mm,right=1.5mm,top=1mm,bottom=1mm}
+\newtcolorbox{greenbox}[1]{colback=lightgreen,colframe=aqgreen,boxrule=.7pt,arc=1.5mm,title=#1,left=1.5mm,right=1.5mm,top=1mm,bottom=1mm}
+\newcommand{\source}[1]{\vfill{\scriptsize\color{aqgray}\textbf{参考：}#1}}
+\newcommand{\tagpill}[1]{\fcolorbox{aqblue!50!black}{lightblue}{\scriptsize\bfseries\strut #1}}
+\newcommand{\warnpill}[1]{\fcolorbox{aqred!60!black}{lightred}{\scriptsize\bfseries\strut #1}}
+\newcommand{\goldpill}[1]{\fcolorbox{aqgold!80!black}{lightgold}{\scriptsize\bfseries\strut #1}}
+\newcommand{\file}[1]{\texttt{#1}}
+
+\title[量化投资、行为误区与AI Agent]{别和机器拼手速：个人投资者如何看懂量化、避开陷阱、用好AI}
+\subtitle{两小时线上直播｜第三批修改版：第一、二模块深化 + 第三模块Demo细化}
+\author{黄耀东博士｜AQUMON 首席科学家}
+\date{2026年7月}
+
+\begin{document}
+
+% 1
+\begin{frame}[plain]
+\begin{center}
+\vspace{0.35cm}
+{\Huge\bfseries\color{aqblue} 别和机器拼手速}\par
+\vspace{0.2cm}
+{\LARGE\bfseries 个人投资者如何看懂量化、避开陷阱、用好AI}\par
+\vspace{0.25cm}
+{\large 黄耀东博士｜AQUMON 首席科学家}\par
+\vspace{0.2cm}
+{\large 2026年7月}\par
+\vspace{0.45cm}
+\tagpill{量化投资} \quad \tagpill{投资异象} \quad \tagpill{行为误区} \quad \tagpill{AI Agent Demo}
+\vspace{0.45cm}
+\begin{keybox}{直播目标}
+不是荐股，而是帮助个人投资者建立一套更科学、更可复盘的投资决策流程。
+\end{keybox}
+\end{center}
+\end{frame}
+
+% 2
+\begin{frame}{本次直播的三大模块}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.32\textwidth}
+\begin{keybox}{模块一：量化投资与投资异象}
+\small
+\begin{itemize}
+\item 量化投资、Alpha 与套利限制
+\item 价值、质量、动量等六类因子
+\item 因子的适用场景、失效风险与回测陷阱
+\item 国内外经典市场案例
+\end{itemize}
+\end{keybox}
+\column{0.32\textwidth}
+\begin{casebox}{模块二：行为误区与机构博弈}
+\small
+\begin{itemize}
+\item 六个互动测验：从损失厌恶到追涨杀跌
+\item 2022年科技创新封闭基金折价案例
+\item 机构投资者的优势、约束与个人应对
+\item 用 Pre-mortem 建立投资纪律
+\end{itemize}
+\end{casebox}
+\column{0.32\textwidth}
+\begin{greenbox}{模块三：AI Agent 工具 Demo}
+\small
+\begin{itemize}
+\item 数据质量检查与信息可信度
+\item 因子解释、冲突分析与风险提示
+\item 回测审计与多角色投资委员会
+\item Human-in-the-loop 投资决策流程
+\end{itemize}
+\end{greenbox}
+\end{columns}
+\vspace{0.18cm}
+\begin{center}
+\small
+\textbf{最后综合应用：用量化、行为金融和AI Agent重新理解2026年7月A股大跌}
+\end{center}
+\end{frame}
+
+% 3
+\begin{frame}{投资风险提示与免责声明}
+\begin{riskbox}{}
+本讲座不做个股推荐，不承诺收益，不鼓励短线交易；所有案例用于解释投资机制，不构成投资建议。
+\end{riskbox}
+\end{frame}
+
+\section{模块一：量化投资与投资异象}
+
+% 4
+\begin{frame}{什么是量化投资}
+\begin{enumerate}
+\item \textbf{量化投资是什么？}\quad 用数据、模型、规则、组合和风控，把投资判断变成可检验流程。
+\item \textbf{投资异象是什么？}\quad 某些长期可观察的收益模式，不能被简单市场风险完全解释。
+\item \textbf{个人投资者能学什么？}\quad 不必和机器拼速度，但可以学习它的纪律、验证、分散和复盘。
+\end{enumerate}
+\vspace{0.3cm}
+\begin{center}
+\Large \textbf{量化不是“神秘公式”，而是把投资从故事变成证据链。}
+\end{center}
+\end{frame}
+
+% 5
+\begin{frame}{什么是量化投资：从观点到流程}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.54\textwidth}
+\begin{keybox}{一个完整的量化流程}
+\begin{enumerate}
+\item 投资假设：为什么这类股票可能有超额收益？
+\item 数据定义：用哪些字段衡量？何时可得？
+\item 信号构造：如何排序、打分、分组？
+\item 组合构建：买多少、分散多少、多久调整？
+\item 风险控制：行业、市值、波动、流动性、回撤。
+\item 复盘审计：成本、滑点、前视偏差、过拟合。
+\end{enumerate}
+\end{keybox}
+\column{0.42\textwidth}
+\begin{casebox}{个人投资者最该借鉴的部分}
+\begin{itemize}
+\item 不要只问“买不买”。
+\item 要问“证据是什么”。
+\item 要问“错了怎么办”。
+\item 要问“这是不是只在回测里赚钱”。
+\end{itemize}
+\end{casebox}
+\end{columns}
+\source{Grinold and Kahn, Active Portfolio Management；Campbell, Lo and MacKinlay, The Econometrics of Financial Markets.}
+\end{frame}
+
+\begin{frame}{量化投资的底层假设：历史不会简单重复，但常常押韵}
+\small
+
+\begin{block}{核心观点}
+量化投资的本质，是在历史数据中识别可验证、可解释、可重复的市场行为模式，
+并假设这些模式在未来仍有一定概率延续。
+\end{block}
+
+\vspace{0.25cm}
+
+\begin{quote}
+\large
+“秦人不暇自哀，而后人哀之；后人哀之而不鉴之，
+亦使后人而复哀后人也。”
+
+\vspace{0.15cm}
+\hfill —— 杜牧《阿房宫赋》
+\end{quote}
+
+\vspace{0.2cm}
+
+\begin{quote}
+\large
+“人类从历史中学到的唯一教训，就是人类没有从历史中吸取任何教训。”
+
+\vspace{0.15cm}
+\hfill —— 黑格尔
+\end{quote}
+
+\vspace{0.25cm}
+
+\begin{alertblock}{量化视角}
+市场并不是机械地重复历史；真正重复的，往往是人性、激励机制、风险偏好与行为偏误。
+量化模型试图捕捉的，正是这些“历史押韵”的统计规律。
+\end{alertblock}
+
+\end{frame}
+
+% 6
+\begin{frame}{量化投资不等于高频、不等于黑箱、不等于稳赚}
+\begin{tabularx}{\textwidth}{p{3.0cm}X X}
+\toprule
+\textbf{常见误解} & \textbf{现实中的量化} & \textbf{个人投资者该学什么} \\
+\midrule
+量化就是高频抢跑 & 高频只是量化的一小部分；很多量化是中低频因子、资产配置、风控。 & 不要在速度战场和机构硬拼。 \\
+量化就是AI黑箱 & 好的量化策略需要经济逻辑、数据审计和风险解释。 & 不要迷信“模型说可以买”。 \\
+量化一定稳定赚钱 & 任何因子都有周期、失效、拥挤和容量问题。 & 策略要能接受阶段性跑输。 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.35cm}
+\begin{center}
+\end{center}
+\end{frame}
+
+% 7
+\begin{frame}{投资异象与 Alpha：到底在说什么？}
+\begin{keybox}{一个简单的资产定价表达}
+\[
+R_{p,t}-R_{f,t}=\alpha_p+\beta_p\left(R_{m,t}-R_{f,t}\right)+\epsilon_t
+\]
+\small
+如果一个组合在控制市场风险后仍然长期留下显著收益，研究者会进一步问：这是风险补偿、行为偏误、市场结构，还是数据挖掘？
+\end{keybox}
+\vspace{0.2cm}
+\begin{casebox}{把 Alpha 讲成人话}
+\small
+Alpha 不是“神秘内幕”，而是：在一个可重复的投资流程中，扣除市场涨跌、交易成本和风险暴露后的超额收益。
+\end{casebox}
+\source{Sharpe (1964) CAPM；Fama and French (1992, 1993) 多因子资产定价。}
+\end{frame}
+
+% ============================================================
+% 3Com--Palm：一价定律失效与套利限制
+% 建议位置：放在“投资异象与 Alpha：到底在说什么？”之后
+% ============================================================
+
+\begin{frame}{3Com--Palm：市场真的会算错加减法吗？}
+\small
+
+\begin{columns}[T,totalwidth=\textwidth]
+
+\column{0.48\textwidth}
+\begin{casebox}{案例背景}
+\scriptsize
+\begin{itemize}
+\item 2000年，3Com 将 Palm 少数股份上市，但仍持有约
+      \textbf{95\%} 的 Palm 股份。
+\item 3Com 宣布：待税务审批后，每持有 1 股 3Com，
+      最终约可获得 \textbf{1.525 股 Palm}。
+\item 因此，买入 3Com 等于买入 Palm 权益，
+      外加 3Com 原有的现金和主营业务。
+\end{itemize}
+\end{casebox}
+
+\column{0.48\textwidth}
+\begin{keybox}{最简单的一价定律}
+\scriptsize
+
+\[
+P_{\mathrm{3Com}}
+\geq
+1.525P_{\mathrm{Palm}}
+\]
+
+Palm 首日收盘价为 \$95.06，因此仅其中的 Palm 权益就值：
+
+\[
+1.525\times95.06
+\approx
+\$144.97
+\]
+
+但 3Com 当日仅收于 \textbf{\$81.81}：
+
+\[
+\text{Stub}
+=
+81.81-144.97
+=
+\boxed{-\$63.16}
+\]
+
+\end{keybox}
+
+\end{columns}
+
+\vspace{0.12cm}
+
+\begin{riskbox}{市场隐含的荒谬结论}
+\scriptsize
+3Com 除 Palm 之外的现金和主营业务，合计被市场定价为约
+\textbf{$-\$220$ 亿}。这不是“估值模型不同”，
+而是同一组现金流出现了互相矛盾的价格。
+\end{riskbox}
+
+\vspace{0.04cm}
+{\tiny\color{aqgray}
+\textbf{参考：}
+Lamont and Thaler (2003),
+\emph{Journal of Political Economy},
+111(2), pp.~227--268.
+}
+
+\end{frame}
+
+
+\begin{frame}{原论文图：负的 Stub 如何逐步修复？}
+
+\centering
+\includegraphics[height=0.6\textheight]
+{figures/3Com_Palm stub_figure.pdf}
+
+\vspace{0.06cm}
+
+\begin{casebox}{图表怎么读？}
+\scriptsize
+\begin{itemize}
+\item 纵轴是 3Com 剔除 Palm 权益后的隐含价值；
+      \textbf{低于零}意味着市场认为3Com其他业务的价值为负。
+\item 3月初 Stub 一度约为 $-\$63$；
+      随着期权开始交易、分拆时间提前以及 IRS 批准，
+      错误定价逐步收敛。
+\item 5月8日确认税务批准及7月27日分配后，
+      Stub 转为正值；最终分拆完成时，两种价格被迫对齐。
+\end{itemize}
+\end{casebox}
+
+\end{frame}
+
+
+\begin{frame}{价格明显错了，为什么没有被套利者纠正？}
+\scriptsize
+
+\begin{columns}[T,totalwidth=\textwidth]
+
+\column{0.47\textwidth}
+\begin{casebox}{需求端：为什么有人高价追买 Palm？}
+\begin{itemize}
+\item \textbf{热门叙事：}
+      互联网泡沫中，Palm 是更纯粹、更容易讲故事的科技新股。
+\item \textbf{过度乐观：}
+      最乐观的投资者不断抬价，悲观者却无法以同等力量表达观点。
+\item \textbf{“博傻”：}
+      即使知道价格偏高，也可能期待下一位投资者以更高价格接手。
+\end{itemize}
+\end{casebox}
+
+\column{0.49\textwidth}
+\begin{riskbox}{供给端：为什么理性空头无能为力？}
+\begin{itemize}
+\item Palm 只有约 \textbf{5\%} 股份公开流通，
+      可供借券的股票极少。
+\item 做空困难且借券成本极高，
+      理论套利利润可能被完全吞噬。
+\item IRS 审批与正式分配前仍有执行风险，
+      价差也可能在收敛前进一步扩大。
+\end{itemize}
+\end{riskbox}
+
+\end{columns}
+
+\vspace{0.10cm}
+
+\begin{greenbox}{Thaler 的核心机制}
+\centering
+\textbf{错误定价能够持续，需要两个条件同时存在：}
+\quad
+过度乐观或非理性需求
+\;+\;
+做空限制与套利成本。
+\end{greenbox}
+
+\vspace{0.08cm}
+
+\begin{center}
+\textbf{这不是市场“看不懂信息”：}
+计算只涉及乘法和减法，而且当时已被财经媒体广泛报道；
+关键是悲观观点无法通过做空充分进入价格。
+\end{center}
+
+\vspace{0.02cm}
+{\tiny\color{aqgray}
+\textbf{参考：}
+Lamont and Thaler (2003), pp.~230--233
+and Section IV on short-sale constraints.
+}
+
+\end{frame}
+
+
+
+
+% 9
+\begin{frame}{从“投资故事”到“可检验因子”}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{keybox}{不要直接相信故事}
+\small
+“低估值会涨”“好公司会涨”“强者恒强”“小盘更灵活”都只是故事。专业研究会把故事变成因子定义、样本、组合和检验。
+\end{keybox}
+\column{0.48\textwidth}
+\begin{greenbox}{一个合格因子至少要问}
+\small
+\begin{itemize}
+\item 是否有经济逻辑？
+\item 是否在样本外有效？
+\item 扣除成本后还剩多少？
+\item 是否集中在少数年份或少数行业？
+\item 是否会因为拥挤而失效？
+\end{itemize}
+\end{greenbox}
+\end{columns}
+\source{Harvey, Liu and Zhu (2016) 提醒大量“发现的因子”可能存在多重检验和数据挖掘问题。}
+\end{frame}
+
+% 10
+\begin{frame}{因子一：价值 Value -- 打折商品}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.50\textwidth}
+\begin{keybox}{常见定义}
+\small
+\begin{itemize}
+\item 低市净率 P/B
+\item 低市盈率 P/E
+\item 高股息率
+\item 低企业价值/经营利润
+\end{itemize}
+\end{keybox}
+\column{0.46\textwidth}
+\begin{casebox}{为什么可能有 Alpha}
+\small
+\begin{itemize}
+\item 市场对坏消息过度悲观。
+\item 低估值可能代表承担了更高基本面风险。
+\item 机构短期排名压力，可能不愿持有“难看”的股票。
+\end{itemize}
+\end{casebox}
+\end{columns}
+\vspace{0.25cm}
+\begin{riskbox}{潜在风险}
+价值股可能是“价值陷阱”：行业衰退、财务质量差、资产减值、治理问题，都可能让低估值越来越低。
+\end{riskbox}
+\source{Fama and French (1992, 1993)；Lakonishok, Shleifer and Vishny (1994) 对价值策略的行为解释。}
+\end{frame}
+
+% 8
+\begin{frame}{学术原图：价值与动量在全球股票市场中的累计收益}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/value_momentum_everywhere_fig2_us_stocks.pdf}
+\end{center}
+\vspace{-0.15cm}
+{\scriptsize \textbf{中文注解：}该原图展示美国股票市场中，价值组合、动量组合，以及二者 50/50 组合的累计收益。它直观说明：价值与动量在长期都有正向回报，而两者结合后通常更平滑。}
+\source{Asness, Moskowitz and Pedersen (2013), \emph{Value and Momentum Everywhere}, Figure 2（U.S./U.K./Europe/Japan stocks panels）, pp.~953--955}
+\end{frame}
+
+% 11
+\begin{frame}{价值因子：适用场景与A股案例}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{greenbox}{更适合的场景}
+\small
+\begin{itemize}
+\item 市场极度追捧成长和热门主题。
+\item 价值与成长估值差达到极端。
+\item 公司现金流和资产质量并未明显恶化。
+\item 组合持有期足够长，能忍受短期跑输。
+\end{itemize}
+\end{greenbox}
+\column{0.48\textwidth}
+\begin{casebox}{国内案例讲法}
+\small
+A股历史上常见“低估值高股息”板块阶段性被忽视，例如部分银行、公用事业、能源和央国企板块。它们并不一定性感，但在利率下行、风险偏好下降或市场重视现金流时，可能重新获得定价。
+\end{casebox}
+\end{columns}
+\vspace{0.22cm}
+\begin{riskbox}{讲给散户的关键提醒}
+低估值不是“马上涨”，而是“赔率可能变好”。价值投资最难的不是买入，而是熬过被市场嘲笑的时间。
+\end{riskbox}
+\end{frame}
+
+% 12
+\begin{frame}{因子二：质量 Quality -- 挑选好公司}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.50\textwidth}
+\begin{keybox}{常见定义}
+\small
+\begin{itemize}
+\item 高 ROE / ROA
+\item 稳定毛利率和现金流
+\item 盈利波动低
+\item 杠杆率较低
+\item 盈利质量较高，少依赖一次性收益
+\end{itemize}
+\end{keybox}
+\column{0.46\textwidth}
+\begin{casebox}{为什么可能有 Alpha}
+\small
+高质量公司通常抗周期能力更强、融资成本更低、管理层更稳定；市场在短期追主题时，可能低估长期复利能力。
+\end{casebox}
+\end{columns}
+\begin{riskbox}{潜在风险}
+好公司如果价格太贵，也会让未来收益率下降。质量因子最怕“好公司、坏价格”。
+\end{riskbox}
+\source{Fama and French (2015) 五因子模型中的盈利能力因子；Novy-Marx (2013) 盈利能力溢价。}
+\end{frame}
+
+
+% 12A
+\begin{frame}{学术原图：盈利能力（Quality / Profitability）因子的时间序列证据}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/novy_marx_fig1_profitability.pdf}
+\end{center}
+\vspace{-0.1cm}
+{\scriptsize \textbf{中文注解：}该原图展示盈利能力策略、价值策略以及 50/50 组合的滚动五年 Sharpe Ratio。它说明盈利能力因子本身具有持续性，而且与价值因子搭配后，风险收益特征往往更均衡。}
+\source{Novy-Marx (2013), \emph{The Other Side of Value: The Gross Profitability Premium}, Figure 1, p.~6}
+\end{frame}
+
+% 13
+\begin{frame}{质量因子：适用场景与国内案例}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.47\textwidth}
+\begin{greenbox}{更适合的场景}
+\small
+\begin{itemize}
+\item 经济增长放缓，市场重视确定性。
+\item 信用环境收紧，财务稳健公司更有优势。
+\item 行业进入存量竞争，龙头企业优势突出。
+\end{itemize}
+\end{greenbox}
+\column{0.49\textwidth}
+\begin{casebox}{国内案例讲法}
+\small
+白酒、家电、消费龙头、医药龙头等“核心资产”曾让市场认识到质量与品牌护城河的价值；但当一致预期过强、估值过高时，质量股也可能经历较长估值压缩。
+\end{casebox}
+\end{columns}
+\vspace{0.25cm}
+\begin{center}\Large \textbf{好公司是长期投资的必要条件之一，但不是充分条件。}\end{center}
+\end{frame}
+
+% 14
+\begin{frame}{因子三：动量 Momentum -- 历史战绩优异}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.50\textwidth}
+\begin{keybox}{常见定义}
+\small
+\begin{itemize}
+\item 过去3--12个月收益率靠前。
+\item 常剔除最近1个月，降低短期反转影响。
+\item 可结合盈利预期上修、成交活跃度和资金流向。
+\end{itemize}
+\end{keybox}
+\column{0.46\textwidth}
+\begin{casebox}{为什么可能有 Alpha}
+\small
+信息扩散需要时间，投资者也会跟随趋势；机构调仓、基金排名和媒体叙事会让趋势短期延续。
+\end{casebox}
+\end{columns}
+\begin{riskbox}{潜在风险}
+动量最怕急转弯。利好证伪、政策变化、资金撤退时，赢家组合可能迅速变成拥挤交易。
+\end{riskbox}
+\source{Jegadeesh and Titman (1993)；Carhart (1997) 四因子模型。}
+\end{frame}
+
+
+% 14A
+\begin{frame}{学术原图：赢家与输家组合的长期累计收益}
+\begin{center}
+\includegraphics[width=0.60\textwidth]{figures/momentum_crashes_fig1_winners_losers.pdf}
+\end{center}
+\vspace{-0.1cm}
+{\scriptsize \textbf{中文注解：}该原图比较了过去赢家组合、过去输家组合、市场组合和无风险资产的长期累计收益。赢家组合长期显著跑赢输家组合，这正是横截面动量异象最经典的证据之一。}
+\source{Daniel and Moskowitz (2016), \emph{Momentum Crashes}, Figure 1, p.~224}
+\end{frame}
+
+% 15
+\begin{frame}{动量因子：A股“赛道股”案例的正确打开方式}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{greenbox}{机会的一面}
+\small
+新能源车、光伏、半导体等高景气赛道在特定阶段，业绩预期、产业政策、资金流和叙事可能形成趋势共振。动量因子会捕捉这种“市场正在重新定价”的过程。
+\end{greenbox}
+\column{0.48\textwidth}
+\begin{riskbox}{风险的一面}
+\small
+当估值、仓位和叙事都非常一致时，任何边际利空都可能导致反转。散户常在趋势尾端被故事吸引，专业资金却已经开始看拥挤度和退出流动性。
+\end{riskbox}
+\end{columns}
+\vspace{0.3cm}
+\begin{center}\large \textbf{动量不是“追高有理”，而是“趋势有证据，退出有纪律”。}\end{center}
+\end{frame}
+
+
+
+% 17
+\begin{frame}{低波动因子：为什么个人投资者特别容易忽视？}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{keybox}{行为原因}
+\small
+很多人喜欢“刺激”的股票，因为上涨时更容易产生暴富想象。低波动股票看起来慢，但回撤小可以减少复利中的损耗。
+\end{keybox}
+\column{0.48\textwidth}
+\begin{casebox}{适用场景}
+\small
+\begin{itemize}
+\item 熊市或震荡市。
+\item 投资者需要控制回撤。
+\item 组合需要防御性资产。
+\item 不想频繁择时，但希望降低净值波动。
+\end{itemize}
+\end{casebox}
+\end{columns}
+\begin{riskbox}{潜在风险}
+低波动不是没有风险。强牛市可能跑输，高股息和防御行业可能受到利率变化影响，策略被追捧后也可能拥挤。
+\end{riskbox}
+\source{Baker, Bradley and Wurgler (2011)；Frazzini and Pedersen (2014)；Eastspring Investments (2019).}
+\end{frame}
+
+% 18
+\begin{frame}{因子五：规模 Size 与流动性 -- 小市值不等于免费午餐}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.50\textwidth}
+\begin{keybox}{常见定义}
+\small
+小市值股票相对大市值股票的超额收益；也常与流动性、机构覆盖、交易成本、壳价值和退市风险交织在一起。
+\end{keybox}
+\column{0.46\textwidth}
+\begin{casebox}{A股特殊性}
+\small
+A股历史上小市值因子容易受到交易制度、壳资源、退市制度和散户偏好的影响。制度变化会让同一个因子的经济含义发生改变。
+\end{casebox}
+\end{columns}
+\begin{riskbox}{潜在风险}
+小盘股最怕流动性枯竭、踩雷、退市、交易成本和容量限制。回测里能买到，不代表实盘能买到。
+\end{riskbox}
+\source{Banz (1981)；Fama and French (1993)；A股市场关于壳价值与小市值异象的研究。}
+\end{frame}
+
+
+% 18A
+\begin{frame}{学术原图：规模因子的长期表现（SMB vs. CMH）}
+\begin{center}
+\includegraphics[width=0.55\textwidth]{figures/size_premium_fig2_smb_cmh_chart_only_verified.pdf}
+\end{center}
+\vspace{-0.1cm}
+{\scriptsize \textbf{中文注解：}该原图比较传统市值规模因子 SMB 与作者改进后的 CMH（Cold Minus Hot，按 ADV 衡量“冷门程度”）长期表现。图中可见，传统 SMB 的表现较弱，而经修正后的 CMH 更稳定、更显著。}
+\source{Ciliberti, Sérié, Simon, Lempérière and Bouchaud (2017), \emph{The “Size Premium” in Equity Markets: Where is the Risk?}}
+\end{frame}
+
+\begin{frame}{因子六：短期反转与情绪 -- 最像“捡便宜”，也最容易接飞刀}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{greenbox}{可能的机会}
+\small
+短期因流动性冲击、恐慌抛售、指数调仓、非基本面利空导致的过度下跌，可能出现均值回归。
+\end{greenbox}
+
+\column{0.48\textwidth}
+\begin{riskbox}{主要风险}
+\small
+如果下跌来自基本面恶化、财务问题或行业拐点，所谓反转可能只是继续下跌的中途休息。
+\end{riskbox}
+\end{columns}
+
+\vspace{0.28cm}
+\begin{casebox}{A股制度相关性}
+\small
+涨跌停、T+1、停复牌、融资交易和投资者情绪，会让短期反转与流动性风险相互缠绕。个人投资者不能只看“跌多了”。
+\end{casebox}
+
+\source{De Bondt and Thaler (1985) 过度反应假说；此处用于解释“过度下跌后可能反转”的机制。}
+\end{frame}
+
+% --- Slide 2: academic evidence ---
+\begin{frame}{学术证据：过去输家组合后续反弹，过去赢家组合后续回落}
+\centering
+\includegraphics[height=0.50\textheight]{figures/debondt_thaler_1985_fig1_overreaction.pdf}
+
+\vspace{0.12cm}
+\begin{casebox}{图表解读}
+\small
+De Bondt and Thaler 将过去三年极端下跌股票组成“输家组合”，极端上涨股票组成“赢家组合”。组合形成后，输家组合相对市场逐步反弹，赢家组合相对市场回落，支持“投资者过度反应后价格修正”的反转逻辑。
+\end{casebox}
+
+\source{De Bondt and Thaler (1985), \textit{Does the Stock Market Overreact?}, Figure 1, p. 800.}
+\end{frame}
+
+
+
+
+
+% 25
+\begin{frame}{如何判断一个因子是不是“看起来很美”？}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{keybox}{三道基础关}
+\small
+\begin{enumerate}
+\item \textbf{逻辑关：}为什么市场会给这类股票收益？
+\item \textbf{数据关：}财务数据是否按公告日处理？有没有未来函数？
+\item \textbf{实盘关：}扣掉交易成本、滑点、停牌、涨跌停后还剩多少？
+\end{enumerate}
+\end{keybox}
+\column{0.48\textwidth}
+\begin{riskbox}{三类常见陷阱}
+\small
+\begin{enumerate}
+\item 参数调到刚好适合历史。
+\item 只展示胜利年份，不展示痛苦年份。
+\item 忽略容量和流动性，假设任何规模都能成交。
+\end{enumerate}
+\end{riskbox}
+\end{columns}
+\source{Bailey et al. (2014) 回测过拟合；Harvey, Liu and Zhu (2016) 因子数据挖掘问题。}
+\end{frame}
+
+% 26
+\begin{frame}{个人投资者可以怎么借鉴因子？}
+\begin{enumerate}
+\item \textbf{用因子做体检：}看自己的持仓到底偏成长、价值、质量、低波动还是高波动。
+\item \textbf{用因子做分散：}不要把所有股票都押在同一种风格和同一个故事上。
+\item \textbf{用因子做复盘：}赚钱是因为市场 Beta、行业暴露，还是因为真正选股？
+\item \textbf{用因子做风险提醒：}当某个风格过度拥挤，少一点自信，多一点警惕。
+\end{enumerate}
+\end{frame}
+
+
+
+
+\section{模块二：个人投资行为误区与机构博弈}
+
+% 28
+\begin{frame}{刻在DNA里的非理性}
+\begin{center}
+\Large \textbf{投资亏钱，很多时候不是因为“不够聪明”，而是因为“大脑太正常”。}
+\end{center}
+\vspace{0.25cm}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{casebox}{行为金融的核心问题}
+\small
+人在真实投资中，不是像教科书里的“理性人”那样稳定计算概率和收益，而是会被亏损、成本价、近期涨跌、群体情绪和故事叙事影响。
+\end{casebox}
+\column{0.48\textwidth}
+\begin{keybox}{这一模块的目标}
+\small
+不是批评散户，而是把常见错误拆开：\textbf{错在哪里、为什么会错、机构如何利用、个人如何防守}。
+\end{keybox}
+\end{columns}
+\source{Kahneman and Tversky (1979) 前景理论；Thaler (1985) 心理账户；Kahneman (2011) 《Thinking, Fast and Slow》。}
+\end{frame}
+
+% 29
+\begin{frame}{互动规则：直播间先投票，再解释}
+\begin{keybox}{每个小测验请先在直播间打 A / B / C}
+\small
+\begin{enumerate}
+\item 先让观众凭直觉选择。
+\item 再解释背后的行为金融机制。
+\item 最后落到投资动作：买入、卖出、仓位、复盘应该怎么改。
+\end{enumerate}
+\end{keybox}
+\vspace{0.25cm}
+\begin{riskbox}{提醒}
+这些小测验没有“道德审判”。多数人都会犯，因为这些偏误来自人类处理风险和不确定性的本能。
+\end{riskbox}
+\vspace{0.25cm}
+\begin{center}\Large \textbf{投资市场不奖励“感觉对”，只奖励“长期做对”。}\end{center}
+\end{frame}
+
+% 30
+\begin{frame}{小测验一：同样是钱，赚钱和亏钱的感觉一样吗？}
+\begin{casebox}{请在直播间投票}
+\small
+假设你必须二选一：
+\begin{itemize}
+\item \textbf{A：}确定赚 10,000 元；
+\item \textbf{B：}50\% 概率赚 25,000 元，50\% 概率不赚不亏。
+\end{itemize}
+你选哪个？
+\end{casebox}
+\vspace{0.2cm}
+\begin{casebox}{再换一个亏损版本}
+\small
+\begin{itemize}
+\item \textbf{A：}确定亏 10,000 元；
+\item \textbf{B：}50\% 概率亏 25,000 元，50\% 概率不亏。
+\end{itemize}
+你又会选哪个？
+\end{casebox}
+\source{Kahneman and Tversky (1979) Prospect Theory.}
+\end{frame}
+
+% 31
+\begin{frame}{答案解析：前景理论 Prospect Theory}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{keybox}{常见结果}
+\small
+很多人在\textbf{盈利}时偏保守，愿意落袋为安；在\textbf{亏损}时反而更愿意冒险，想靠一次反弹把亏损扳回来。
+\end{keybox}
+\column{0.48\textwidth}
+\begin{riskbox}{投资里的表现}
+\small
+\begin{itemize}
+\item 盈利股票很快卖掉；
+\item 亏损股票长期死扛；
+\item 亏损越大，越想加仓摊平；
+\item 把“回本”当成投资目标。
+\end{itemize}
+\end{riskbox}
+\end{columns}
+\vspace{0.25cm}
+\begin{center}\Large \textbf{市场不会记得你的成本价，只有账户会记得。}\end{center}
+\source{Kahneman and Tversky (1979)；Tversky and Kahneman (1992) 累积前景理论。}
+\end{frame}
+
+% 32
+\begin{frame}{小测验二：你会卖掉哪一只股票？}
+\begin{casebox}{情境}
+\small
+你持有两只股票，现在急需卖出一只：
+\begin{itemize}
+\item \textbf{股票A：}买入后上涨 25\%，基本面变化不大；
+\item \textbf{股票B：}买入后下跌 25\%，基本面也没有变好。
+\end{itemize}
+你更倾向于卖哪一只？
+\end{casebox}
+\vspace{0.25cm}
+\begin{keybox}{直播互动}
+\small
+A：卖赚钱的股票；\quad B：卖亏钱的股票；\quad 
+\end{keybox}
+\end{frame}
+
+% 33
+\begin{frame}{答案解析：处置效应 Disposition Effect}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{casebox}{典型行为}
+\small
+投资者倾向于太早卖出盈利资产，太久持有亏损资产。原因包括：想确认自己做对了，不愿承认错误，也不想把账面亏损变成真实亏损。
+\end{casebox}
+\column{0.48\textwidth}
+\begin{riskbox}{真实代价}
+\small
+\begin{itemize}
+\item 让好股票过早离场；
+\item 让坏股票占用仓位；
+\item 组合风险越来越集中；
+\item 复盘变成“等回本”。
+\end{itemize}
+\end{riskbox}
+\end{columns}
+\vspace{0.25cm}
+\begin{keybox}{改法}
+卖出规则不要写“涨了多少、亏了多少”，而要写：\textbf{投资假设是否被证伪、估值是否过高、风险预算是否超标、是否有更好的替代机会}。
+\end{keybox}
+\source{Shefrin and Statman (1985)；Odean (1998).}
+\end{frame}
+
+% 34
+\begin{frame}{小测验三：成本价到底重不重要？}
+\begin{casebox}{情境}
+\small
+你以 50 元买入一只股票，现在跌到 35 元。你重新研究后认为：
+\begin{itemize}
+\item 公司基本面低于预期；
+\item 合理价值可能只有 28--32 元；
+\item 等回到 50 元再卖。
+\end{itemize}
+\end{casebox}
+\vspace{0.2cm}
+\begin{keybox}{问题}
+\small
+同意上面做法选A，不然选B
+\end{keybox}
+\end{frame}
+
+% 35
+\begin{frame}{答案解析：锚定效应与沉没成本}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{keybox}{锚定效应 Anchoring}
+\small
+人会过度依赖最初看到的数字。股票里的锚，最常见就是成本价、历史高点、券商目标价和朋友告诉你的“合理价”。
+\end{keybox}
+\column{0.48\textwidth}
+\begin{riskbox}{沉没成本 Sunk Cost}
+\small
+已经发生的亏损不应该决定未来是否继续持有。真正的问题只有一个：\textbf{以今天的价格和信息，你还愿不愿意重新买入？}
+\end{riskbox}
+\end{columns}
+\vspace{0.25cm}
+\begin{casebox}{一句话检查}
+如果这只股票今天不是你的持仓，而是一只新股票，你还会买吗？如果不会，继续持有往往只是情绪，不是投资。
+\end{casebox}
+\source{Tversky and Kahneman (1974) 关于启发式与偏误；Thaler (1980, 1985) 关于心理账户与沉没成本。}
+\end{frame}
+
+% 36
+\begin{frame}{小测验四：连续几次做对后，你会不会变大胆？}
+\begin{casebox}{情境}
+\small
+你最近三次交易都赚钱。第四次看到一个热门题材，朋友也在买，社群里全是利好。你会怎么做？
+\begin{itemize}
+\item \textbf{A：} 状态很好，加大仓位；
+\item \textbf{B：} 仍然按事先规则检查估值、风险和止错条件。
+\end{itemize}
+\end{casebox}
+\end{frame}
+
+% 37
+\begin{frame}{答案解析：过度自信与过度交易}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.50\textwidth}
+\begin{keybox}{过度自信的三种表现}
+\small
+\begin{itemize}
+\item 高估自己的信息优势；
+\item 低估交易成本和犯错概率；
+\item 把市场上涨误认为个人能力。
+\end{itemize}
+\end{keybox}
+\column{0.46\textwidth}
+\begin{riskbox}{对个人投资者的伤害}
+\small
+交易越频繁，越容易把收益交给印花税、佣金、滑点和错误决策。市场像赌场一样欢迎高频参与者，只是它不会给你送筹码饮料。
+\end{riskbox}
+\end{columns}
+\vspace{0.25cm}
+\begin{casebox}{改法}
+每笔交易前强制写下：买入理由、反方理由、最大亏损、卖出条件。没有写完，不许下单。
+\end{casebox}
+\source{Barber and Odean (2000)；Barber and Odean (2001).}
+\end{frame}
+
+% 38
+\begin{frame}{小测验五：热门故事是不是更可信？}
+\begin{casebox}{情境}
+\small
+某个主题连续上涨，媒体每天报道，社群里不断出现“AI新时代”“十年大趋势”“错过再等十年”。投资AI主题的时机选择？
+\end{casebox}
+\begin{enumerate}
+\item A：机不可失，不能贻误战机；
+\item B：再观察等等；
+\end{enumerate}
+\source{Shiller (2000) 关于叙事、非理性繁荣；Kahneman (2011) 关于可得性与代表性启发。}
+\end{frame}
+
+% ============================================================
+% 小测验六：过度恐慌
+% 插入位置：
+% “小测验五：热门故事是不是更可信？”之后
+% “行为误区地图：从心理到交易动作”之前
+% ============================================================
+
+% 39
+\begin{frame}{小测验六：暴跌时，“先减仓再说”更安全吗？}
+
+\begin{casebox}{经典场景}
+\small
+1987年黑色星期一、2008年金融危机以及2020年疫情初期，
+市场都曾出现类似的反馈循环：
+
+\[
+\text{价格急跌}
+\;\rightarrow\;
+\text{恐惧上升}
+\;\rightarrow\;
+\text{集中卖出}
+\;\rightarrow\;
+\text{价格进一步下跌}
+\]
+
+现在，假设你持有一个较分散的股票组合，没有融资杠杆，
+未来一年也没有大额用钱需求。突发危机发生后，市场连续数日急跌，
+新闻和社群几乎全是负面消息。
+\end{casebox}
+
+\vspace{0.15cm}
+
+\begin{keybox}{你会选择哪一种做法？}
+\small
+
+\textbf{A：先减仓三分之一。}\;
+价格通常比公开新闻更早反映风险；
+等指数不再创新低、波动率明显回落后，再逐步买回来。
+
+\vspace{0.12cm}
+
+\textbf{B：暂时不因跌幅本身改变仓位。}\;
+先重新检查公司基本面、现金需求、杠杆和组合风险；
+只有触发事先设定的条件，才执行减仓。
+\end{keybox}
+
+
+\source{Shiller (1987) 对1987年股灾投资者行为的调查；
+Kahneman (2011) 关于损失厌恶、可得性启发与情绪决策。}
+\end{frame}
+
+
+% 40
+\begin{frame}{真实案例：2022年科技创新封闭基金“打九折”}
+
+\begin{columns}[T,totalwidth=\textwidth]
+
+\column{0.60\textwidth}
+\centering
+\includegraphics[
+  width=\linewidth,
+  keepaspectratio
+]{CN_LOF_Discount.pdf}
+
+\vspace{0.03cm}
+
+{\tiny\color{aqgray}
+Wind数据，交易日期：2022年2月22日。
+}
+
+\column{0.37\textwidth}
+
+\begin{casebox}{截图中的典型案例}
+\scriptsize
+\begin{itemize}
+\item 中银证券科技创新3年封闭运作：
+      折价约 \textbf{9.15\%}；
+\item 红土创新科技创新3年封闭运作：
+      折价约 \textbf{9.01\%}；
+\item 多只科技创新及定期开放基金同时出现明显折价。
+\end{itemize}
+\end{casebox}
+
+\vspace{0.10cm}
+
+\begin{riskbox}{当时的市场背景}
+\scriptsize
+截至2月22日，两只基金年内净值已经分别下跌约
+\textbf{11.14\%}和\textbf{12.75\%}。
+
+在底层科技股下跌之外，部分投资者又在二级市场集中卖出，
+使场内价格相对基金净值进一步下跌。
+\end{riskbox}
+
+\end{columns}
+
+\source{Wind（2022年2月22日）；
+《中国证券报》，《多只场内基金“打折” 套利需谨慎》，
+2022年2月24日。}
+\end{frame}
+
+
+% 41
+\begin{frame}{案例解析：折价被恐慌放大}
+\scriptsize
+
+
+
+\begin{riskbox}{情绪部分：恐慌怎样放大折价？}
+\begin{itemize}
+\item \textbf{近期偏误：}
+      把最近的下跌趋势直接外推到未来；
+\item \textbf{损失厌恶：}
+      已经亏损后，更急于消除继续亏损的痛苦；
+\item \textbf{羊群效应：}
+      看到其他投资者卖出，自己也跟着退出；
+\item \textbf{行动偏误：}
+      认为“做点什么”一定比暂时不动更安全。
+\end{itemize}
+\end{riskbox}
+
+
+\vspace{0.10cm}
+
+\begin{greenbox}{回看刚才的小测验}
+\centering
+\textbf{A不一定永远错误，B也不等于永远不卖。}
+
+\vspace{0.05cm}
+
+关键区别在于：
+
+\[
+\underbrace{\text{按照事先制定的风险规则减仓}}_{\text{理性风控}}
+\qquad\neq\qquad
+\underbrace{\text{暴跌后临时发明卖出理由}}_{\text{恐慌决策}}
+\]
+\end{greenbox}
+
+\vspace{0.08cm}
+
+\begin{center}
+\large
+\textbf{过度恐慌并不是“卖出了股票”，而是让价格下跌本身取代了分析和规则。}
+\end{center}
+
+\source{Lee, Shleifer and Thaler (1991)；
+Pontiff (1996)；中国证券报（2022年2月24日）。}
+\end{frame}
+
+% 39
+\begin{frame}{行为误区地图：从心理到交易动作}
+\begin{tabularx}{\textwidth}{p{2.6cm}X X}
+\toprule
+\textbf{心理偏误} & \textbf{投资中的表现} & \textbf{防守动作} \\
+\midrule
+损失厌恶 & 怕承认亏损，越跌越想回本 & 事先定义止错条件，不用成本价做锚 \\
+处置效应 & 卖掉盈利股，死扛亏损股 & 按未来预期和风险预算卖出 \\
+过度自信 & 频繁交易，重仓单一观点 & 交易前写反方理由和最大亏损 \\
+锚定效应 & 盯成本价、历史高点、目标价 & 用最新信息重估价值区间 \\
+羊群效应 & 追热门题材，害怕错过 & 检查拥挤度和退出流动性 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+\begin{center}\large \textbf{对情绪训练自我察觉}\end{center}
+\end{frame}
+
+% 40
+\begin{frame}{机构投资者的优势：不是他们永远对，而是他们更系统}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{keybox}{机构常见优势}
+\small
+\begin{itemize}
+\item 数据：财务、行情、另类数据、产业链信息；
+\item 研究：团队分工、调研、模型、数据库；
+\item 执行：交易系统、算法、风控和合规；
+\item 组合：分散、归因、再平衡、风险预算。
+\end{itemize}
+\end{keybox}
+\column{0.48\textwidth}
+\begin{riskbox}{个人常输的战场}
+\small
+\begin{itemize}
+\item 日内短线和消息反应；
+\item 热点题材最后一棒；
+\item 高杠杆和满仓押注；
+\item 把朋友圈消息当研究报告。
+\end{itemize}
+\end{riskbox}
+\end{columns}
+\vspace{0.25cm}
+\begin{center}\Large \textbf{和机构博弈，第一步不是变强，而是别选错战场。}\end{center}
+\end{frame}
+
+% 41
+\begin{frame}{机构也有软肋：个人投资者不是完全没有优势}
+\begin{tabularx}{\textwidth}{p{3.0cm}X X}
+\toprule
+\textbf{机构约束} & \textbf{可能带来的问题} & \textbf{个人可借鉴的优势} \\
+\midrule
+短期业绩排名 & 容易追逐短期热门风格 & 可用更长周期评估投资假设 \\
+赎回压力 & 下跌时被迫卖出，无法等待 & 不加杠杆时可以选择等待 \\
+容量限制 & 大资金难买小而分散的机会 & 小资金更灵活，但不能忽略流动性 \\
+合规和基准约束 & 很难偏离基准太多 & 可更独立，但必须自建纪律 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.25cm}
+\begin{casebox}{关键条件}
+个人优势只有在\textbf{不加杠杆、不追热点、有现金流、有纪律、有复盘}时才成立。否则所谓“长期资金”，只是长期被套的另一种说法。
+\end{casebox}
+\end{frame}
+
+% 42
+\begin{frame}{个人如何与机构博弈：四个“不打”与四个“要打”}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{riskbox}{四个不打}
+\small
+\begin{enumerate}
+\item 不打速度战：不要和程序化交易拼反应。
+\item 不打消息战：你看到的“独家消息”通常已经不独家。
+\item 不打杠杆战：杠杆会把小错误变成大事故。
+\item 不打情绪战：越热闹的地方，越要先看出口。
+\end{enumerate}
+\end{riskbox}
+\column{0.48\textwidth}
+\begin{greenbox}{四个要打}
+\small
+\begin{enumerate}
+\item 打流程战：研究、估值、仓位、复盘。
+\item 打耐心战：避免被短期波动赶下车。
+\item 打分散战：不要把一个故事变成全部资产。
+\item 打工具战：用AI补研究、反方观点和审计。
+\end{enumerate}
+\end{greenbox}
+\end{columns}
+\end{frame}
+% 44
+\begin{frame}{互动练习：5分钟 Pre-mortem 预先验尸}
+\begin{casebox}{请观众跟着写}
+\small
+想象你今天买入的一只股票，三个月后亏了 30\%。请写下最可能的三个原因：
+\begin{enumerate}
+\item 基本面是否低于预期？
+\item 估值是否太贵？
+\item 行业或政策是否变化？
+\item 交易是否过度拥挤？
+\item 是否只是因为你不想错过？
+\end{enumerate}
+\end{casebox}
+\vspace{0.25cm}
+\begin{greenbox}{为什么有效}
+\small
+预先验尸能迫使投资者在情绪高涨前思考失败路径，减少事后找借口。它特别适合配合AI Agent：让AI扮演反方分析师，专门攻击你的投资逻辑。
+\end{greenbox}
+\source{Klein (2007) 对 premortem 方法的讨论；行为金融中的过度自信与确认偏误研究。}
+\end{frame}
+
+
+
+
+
+\section{模块三：AI Agent 工具 Demo}
+
+% 48
+\begin{frame}{模块三定位：AI 不是荐股机，而是研究助理团}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{greenbox}{Demo要证明什么}
+\small
+\begin{itemize}
+\item AI 可以帮助整理数据、解释因子、质疑回测、生成复盘。
+\item AI 不能替代真实数据、确定性程序、交易纪律和人的责任。
+\item 现场展示的是\textbf{研究流程}，不是“明天买什么”。
+\end{itemize}
+\end{greenbox}
+\column{0.48\textwidth}
+\begin{riskbox}{最重要的边界}
+\small
+\begin{itemize}
+\item Agent 不允许自己编造缺失数据。
+\item Agent 不允许把一年回测包装成长期规律。
+\item Agent 不允许绕过人类风控直接下单。
+\end{itemize}
+\end{riskbox}
+\end{columns}
+\vspace{0.25cm}
+\begin{center}\Large \textbf{这不是让AI替你赌，而是让AI帮你少犯低级错。}\end{center}
+\source{课程 Manual：Agent 负责解释、质疑和编排；最终判断由 Human-in-the-loop 完成。}
+\end{frame}
+
+% 49
+\begin{frame}{Demo三层架构：数据、量化程序、Agent}
+\begin{center}
+\begin{tikzpicture}[node distance=1.1cm,>=stealth]
+\node[draw,rounded corners,fill=lightblue,minimum width=8.8cm,minimum height=0.9cm] (data) {\textbf{Layer 1：真实数据与冻结快照} \quad Tushare $\rightarrow$ raw snapshot $\rightarrow$ Classroom Cache};
+\node[draw,rounded corners,fill=lightgreen,minimum width=8.8cm,minimum height=0.9cm,below of=data] (quant) {\textbf{Layer 2：确定性量化程序} \quad PIT 因子 $\rightarrow$ 组合 $\rightarrow$ 回测 $\rightarrow$ 归因};
+\node[draw,rounded corners,fill=lightgold,minimum width=8.8cm,minimum height=0.9cm,below of=quant] (agent) {\textbf{Layer 3：AI Agent 推理} \quad 解释 $\rightarrow$ 反驳 $\rightarrow$ 审计 $\rightarrow$ 总结};
+\draw[->,thick,aqblue] (data) -- (quant);
+\draw[->,thick,aqgreen] (quant) -- (agent);
+\end{tikzpicture}
+\end{center}
+\begin{keybox}{给观众的解释}
+\small
+先有可信数据，再有可复现计算，最后才让AI解释和质疑。顺序不能反过来；否则就是“先有故事，再找证据”。
+\end{keybox}
+\end{frame}
+
+
+
+
+
+% 53
+\begin{frame}{Demo A互动问题：看到漂亮结论前，先问三句话}
+\begin{casebox}{直播间提问}
+\large
+如果一个AI告诉你：“我发现某策略2025年显著跑赢沪深300。”你第一反应应该问什么？
+\end{casebox}
+\vspace{0.2cm}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.32\textwidth}
+\begin{keybox}{问题1}
+\small 数据从哪里来？是否是真实来源，还是示例数据？
+\end{keybox}
+\column{0.32\textwidth}
+\begin{keybox}{问题2}
+\small 当时能不能知道这些数据？是否使用了未来才披露的财报？
+\end{keybox}
+\column{0.32\textwidth}
+\begin{keybox}{问题3}
+\small 有没有基准、成本、停牌、调仓和样本外检验？
+\end{keybox}
+\end{columns}
+\vspace{0.25cm}
+\begin{center}\Large \textbf{先审数据，再听故事。}\end{center}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% 63
+\begin{frame}{AI Agent 的三条使用原则}
+\begin{enumerate}
+\item \textbf{先结构化输入，再让AI输出。}\quad 没有数据、假设和边界的 Prompt，很容易得到漂亮废话。
+\item \textbf{让AI先反驳你，再支持你。}\quad 投资最贵的错误，通常不是不知道，而是不愿意知道。
+\item \textbf{让AI记录流程，而不是替你承担风险。}\quad 买入理由、退出条件、复盘结论都要留痕。
+\end{enumerate}
+\vspace{0.35cm}
+\begin{center}
+\Large \textbf{个人投资者不一定要成为量化基金，}\par
+\Large \textbf{但可以用量化思维和AI工具，让自己少一点随手交易。}
+\end{center}
+\end{frame}
+
+% --- Insert after Slide 63, before \section{参考资料} ---
+
+\section{结尾案例：2026年7月A股大跌如何用量化思维理解}
+
+
+\begin{frame}{7月A股大跌：不要只问“谁砸盘”，要问“交易结构为何脆弱”}
+\small
+\begin{keybox}{一句话总结}
+这轮下跌更像是：\textbf{高拥挤科技交易 + 预期兑现 + 大型IPO抽水预期 + 海外科技股调整 + 杠杆与风控减仓} 共同触发的系统性回撤。
+\end{keybox}
+
+\vspace{0.2cm}
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.50\textwidth}
+\begin{casebox}{表层现象}
+\begin{itemize}
+\item 指数下跌，个股普跌；
+\item 科创、创业板、AI、算力、半导体跌幅更大；
+\item 电力、银行、煤炭等防御板块相对抗跌。
+\end{itemize}
+\end{casebox}
+
+\column{0.46\textwidth}
+\begin{riskbox}{深层逻辑}
+\begin{itemize}
+\item 前期热门交易过于拥挤；
+\item 股价已提前反映较高预期；
+\item 一旦利好兑现不超预期，就容易“卖事实”；
+\item 跌破关键位置后，止损、融资盘和风控盘放大波动。
+\end{itemize}
+\end{riskbox}
+\end{columns}
+
+\source{每日经济新闻，2026-07-17；中国证券报，2026-07-17；Reuters，2026-07-16/17。}
+\end{frame}
+
+\begin{frame}{和量化“砸盘”有关吗？更准确说：量化可能是放大器，不一定是导火索}
+\small
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{keybox}{量化可能如何放大下跌}
+\begin{itemize}
+\item 动量模型：强势股趋势反转后减仓；
+\item 波动率模型：波动上升后降低风险暴露；
+\item 止损与回撤控制：触发被动卖出；
+\item 指数增强：减少科技、成长、小盘暴露；
+\item 高频做市：极端行情中流动性供给下降。
+\end{itemize}
+\end{keybox}
+
+\column{0.48\textwidth}
+\begin{riskbox}{但不能简单归因于“量化砸盘”}
+\begin{itemize}
+\item 量化不是单一策略：有动量，也有反转、套利和市场中性；
+\item 没有逐笔账户与策略数据，无法判断谁先卖；
+\item 本轮调整前已存在估值、拥挤、融资和预期兑现压力；
+\item 量化更像“鼓风机”，不是唯一“点火者”。
+\end{itemize}
+\end{riskbox}
+\end{columns}
+
+\vspace{0.2cm}
+\begin{center}
+\Large \textbf{市场下跌时，最危险的解释是：把复杂系统归咎于一个简单坏人。}
+\end{center}
+
+\source{沪深北交易新规于2026年7月6日起实施；交易机制变化与程序化交易监管影响短线流动性。}
+\end{frame}
+
+\begin{frame}{后市怎么看：不是猜点位，而是看三个确认信号}
+\small
+\begin{tabularx}{\textwidth}{p{2.9cm}X X}
+\toprule
+\textbf{情景} & \textbf{需要观察的信号} & \textbf{投资含义} \\
+\midrule
+技术性反弹 & 放量止跌，跌停数量下降，科技龙头不再破位 & 可小仓位观察，但不要把反弹误认为趋势反转。 \\
+震荡筑底 & 成交稳定，融资余额企稳，中报业绩与估值重新匹配 & 适合做组合再平衡，降低单一热门因子暴露。 \\
+继续探底 & 放量下跌，融资平仓扩散，海外科技股继续杀估值 & 控制仓位，优先活下来，不急于接飞刀。 \\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.3cm}
+\begin{casebox}{量化视角}
+后市判断不要靠一句“看多”或“看空”，而要拆成：\textbf{估值是否合理、盈利是否兑现、交易是否拥挤、流动性是否改善、风险是否已充分释放}。
+\end{casebox}
+
+\source{截至2026年7月17日，A股出现放量普跌，创业板指、科创50跌幅明显，市场进入风险再定价阶段。}
+\end{frame}
+
+\begin{frame}{行业方向：相对看多防御与真实景气，谨慎高拥挤题材}
+\small
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.48\textwidth}
+\begin{greenbox}{相对看多：先看确定性}
+\begin{itemize}
+\item \textbf{高股息与防御：}电力、公用事业、银行、煤炭；
+\item \textbf{真实景气科技：}AI算力、半导体、存储、先进封装，但只看业绩能兑现、估值回落后的龙头；
+\item \textbf{政策与产业共振：}国产替代、能源安全、硬科技核心环节。
+\end{itemize}
+\end{greenbox}
+
+\column{0.48\textwidth}
+\begin{riskbox}{相对谨慎：避开拥挤与脆弱}
+\begin{itemize}
+\item 前期涨幅巨大、估值透支的AI题材股；
+\item 业绩预告不及预期的高弹性成长股；
+\item 高融资、高换手、高波动的小盘题材；
+\item 缺少现金流支撑、只靠故事驱动的概念股。
+\end{itemize}
+\end{riskbox}
+\end{columns}
+
+\vspace{0.2cm}
+\begin{center}
+\Large \textbf{好行业不等于好价格；好故事不等于好股票。}
+\end{center}
+
+\source{7月17日盘面显示，电力、银行等防御方向相对强势，AI算力、半导体、医药等高弹性方向承压。}
+\end{frame}
+
+\begin{frame}{把市场情绪变成检查清单}
+\small
+\begin{enumerate}
+\item \textbf{用因子视角看持仓：}我的组合是不是过度暴露在科技、成长、小盘、动量或高波动因子上？
+\item \textbf{用行为金融检查自己：}我是基于证据调仓，还是因为恐慌、亏损厌恶或不愿承认错误？
+\item \textbf{用AI Agent做反方：}让AI列出持仓的三条看空理由、三条证伪条件、三条需要继续跟踪的数据。
+\item \textbf{用风控纪律保护本金：}单一个股、单一行业、单一风格都不要过度集中；先控制回撤，再谈进攻。
+\end{enumerate}
+
+\vspace{0.25cm}
+\begin{keybox}{小结}
+这次下跌不是简单的“量化砸盘”，而是一次拥挤交易的压力测试。要学会识别自己是否站在同一条拥挤赛道上。
+\end{keybox}
+
+\end{frame}
+
+% closing
+\begin{frame}{结束页：把三件事带走}
+\begin{enumerate}
+\item \textbf{看懂量化：}Alpha 不是神秘消息，而是可解释、可验证、可承受风险的收益来源。
+\item \textbf{看懂自己：}个人投资最大的对手，常常不是机构，而是自己的过度自信、损失厌恶和追涨杀跌。
+\item \textbf{用好AI：}AI Agent 不替你预测市场，但可以帮你审数据、找反方、做复盘、守纪律。
+\end{enumerate}
+\end{frame}
+
+\section{参考资料}
+
+\begin{frame}[allowframebreaks]{参考资料与引用}
+\scriptsize
+\nocite{*}
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{frame}
+
+
+
+\end{document}
