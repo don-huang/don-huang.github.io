@@ -1,0 +1,12 @@
+{{ $item := .item }}
+
+<article class="talk-item">
+  <time datetime="{{ time.Format "2006-01-02" $item.Date }}">{{ time.Format "2006" $item.Date }}</time>
+  <div>
+    <h2><a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a></h2>
+    <p class="talk-venue">
+      {{ $item.Params.event }}{{ with $item.Params.location }} · {{ . }}{{ end }}
+    </p>
+    {{ with $item.Params.summary }}<p class="talk-summary">{{ . }}</p>{{ end }}
+  </div>
+</article>

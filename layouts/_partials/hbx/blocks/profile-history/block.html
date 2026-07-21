@@ -1,0 +1,92 @@
+{{/* Compact professional history with semantic headings. */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $author := $block.content.username | default "admin" }}
+{{ $person_page := site.GetPage (printf "/authors/%s" $author) }}
+
+{{ if not $person_page }}
+  {{ errorf "Profile history block could not find author page /authors/%s" $author }}
+{{ end }}
+
+{{ $person := $person_page.Params }}
+
+<div class="profile-history">
+  {{ with $person.work }}
+    <section class="history-section" aria-labelledby="work-heading">
+      <h2 id="work-heading">Professional Experience</h2>
+      <ol class="history-list">
+        {{ range . }}
+          <li>
+            <div class="history-item-heading">
+              <div>
+                <h3>{{ .position }}</h3>
+                <p>
+                  {{ with .company_url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
+                  {{ .company_name }}
+                  {{ if .company_url }}</a>{{ end }}
+                </p>
+              </div>
+              <time>
+                {{ if .date_start }}{{ (time .date_start) | time.Format "January 2006" }} –{{ end }}
+                {{ if .date_end }}{{ (time .date_end) | time.Format "January 2006" }}{{ else }}Present{{ end }}
+              </time>
+            </div>
+            {{ with .summary }}<div class="history-summary">{{ . | $page.RenderString }}</div>{{ end }}
+          </li>
+        {{ end }}
+      </ol>
+    </section>
+  {{ end }}
+
+  {{ with $person.education }}
+    <section class="history-section" aria-labelledby="history-education-heading">
+      <h2 id="history-education-heading">Education</h2>
+      <ol class="history-list history-list-compact">
+        {{ range . }}
+          <li>
+            <div class="history-item-heading">
+              <div>
+                <h3>{{ .area }}</h3>
+                <p>{{ .institution }}</p>
+              </div>
+              <time>
+                {{ if .date_start }}{{ (time .date_start) | time.Format "2006" }} –{{ end }}
+                {{ if .date_end }}{{ (time .date_end) | time.Format "2006" }}{{ else }}Present{{ end }}
+              </time>
+            </div>
+            {{ with .summary }}<div class="history-summary">{{ . | $page.RenderString }}</div>{{ end }}
+          </li>
+        {{ end }}
+      </ol>
+    </section>
+  {{ end }}
+
+  {{ with $person.awards }}
+    <section class="history-section" aria-labelledby="awards-heading">
+      <h2 id="awards-heading">Awards</h2>
+      <ol class="history-list history-list-compact">
+        {{ range sort . "date" "desc" }}
+          <li>
+            <div class="history-item-heading">
+              <div>
+                <h3>{{ .title }}</h3>
+                <p>{{ .awarder }}</p>
+              </div>
+              {{ with .date }}<time>{{ (time .) | time.Format "2006" }}</time>{{ end }}
+            </div>
+            {{ with .summary }}<div class="history-summary">{{ . | $page.RenderString }}</div>{{ end }}
+          </li>
+        {{ end }}
+      </ol>
+    </section>
+  {{ end }}
+
+  {{ with $person.languages }}
+    <section class="history-section" aria-labelledby="languages-heading">
+      <h2 id="languages-heading">Languages</h2>
+      <ul class="language-list">
+        {{ range . }}<li>{{ .name }}</li>{{ end }}
+      </ul>
+    </section>
+  {{ end }}
+</div>

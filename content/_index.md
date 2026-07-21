@@ -4,71 +4,76 @@ date: 2022-10-24
 type: landing
 
 design:
-  spacing: '6rem'
+  spacing: '4.5rem'
 
 sections:
-  - block: resume-biography-3
+  - block: profile-about
+    id: about
     content:
       username: admin
-      text: ''
       button:
         text: Download CV
         url: uploads/resume.pdf
-      headings:
-        about: ''
-        education: ''
-        interests: ''
-    design:
-      background:
-        gradient_mesh:
-          enable: true
-      avatar:
-        size: medium
-        shape: circle
 
-  - block: markdown
+  - block: research-topics
+    id: research-focus
     content:
-      title: Research
-      subtitle: ''
-      text: |-
-        My research sits at the intersection of **financial mathematics**, **stochastic control**, and **machine learning**. On the theoretical side, I work on stochastic optimal control problems arising in retirement product design, derivatives pricing, and dynamic asset allocation — developing regression-based Monte Carlo methods and weak convergence analyses for path-dependent models. On the applied side, I build ML-driven systems for portfolio optimisation, macroeconomic regime detection, ESG scoring, and LLM-enabled investment advisory, deploying these at institutional scale through AQUMON.
+      title: Research Focus
+      text: Rigorous mathematical methods, empirical learning, and deployable financial systems.
+      items:
+        - name: Stochastic Control & Retirement Finance
+          description: Dynamic decision models for withdrawal guarantees, retirement income, and path-dependent financial products.
+        - name: Portfolio Optimization & Reinforcement Learning
+          description: Robust allocation and rebalancing methods that account for estimation error, constraints, and transaction costs.
+        - name: Financial Machine Learning & ESG Analytics
+          description: Data-driven models for market regimes, financial text, sustainability signals, and investment research.
+        - name: LLMs and AI Agents for Wealth Management
+          description: Auditable AI systems that support advisory, portfolio monitoring, and regulated financial workflows.
+      cta:
+        text: Explore research
+        url: /research/
 
-        I am interested in problems where rigorous mathematical structure and practical deployability are both essential — and where neither can be compromised.
-    design:
-      columns: '1'
-
-  - block: collection
+  - block: content-heading
     id: publications
     content:
+      level: 2
       title: Selected Publications
+      text: Peer-reviewed work in stochastic control, computational finance, and path-dependent models.
+
+  - block: collection
+    content:
+      count: 4
       filters:
         folders:
           - publications
+        publication_type: article-journal
+      archive:
+        enable: true
+        text: View all publications
+        link: /publications/
+    design:
+      view: citation
+      columns: 1
+
+  - block: content-heading
+    id: projects
+    content:
+      level: 2
+      title: Selected Projects
+      text: Research translated into production systems for retirement and institutional wealth management.
+
+  - block: collection
+    content:
+      count: 3
+      filters:
+        folders:
+          - projects
         featured_only: true
+      archive:
+        enable: true
+        text: View all projects
+        link: /projects/
     design:
-      view: citation
-      columns: 1
-
-  - block: collection
-    content:
-      title: Working Papers
-      filters:
-        folders:
-          - publications
-        featured_only: false
-        exclude_featured: true
-        tag: working-paper
-    design:
-      view: citation
-      columns: 1
-
-  - block: collection
-    id: talks
-    content:
-      title: Invited Talks
-      filters:
-        folders:
-          - events
-    design:
-      view: card
+      view: summary-grid-home
+      columns: 2
 ---

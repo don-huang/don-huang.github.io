@@ -1,0 +1,44 @@
+{{ if .IsHome }}
+  {{ $person_page := site.GetPage "/authors/admin" }}
+  {{ with $person_page }}
+    {{ $person := .Params }}
+    {{ $same_as := slice }}
+    {{ range $person.profiles }}
+      {{ $scheme := (urls.Parse .url).Scheme }}
+      {{ if in (slice "http" "https") $scheme }}
+        {{ $same_as = $same_as | append .url }}
+      {{ end }}
+    {{ end }}
+
+    {{ $schools := slice }}
+    {{ $seen_schools := newScratch }}
+    {{ range $person.education }}
+      {{ if not ($seen_schools.Get .institution) }}
+        {{ $schools = $schools | append (dict "@type" "CollegeOrUniversity" "name" .institution) }}
+        {{ $seen_schools.Set .institution true }}
+      {{ end }}
+    {{ end }}
+
+    {{ $schema := dict
+      "@context" "https://schema.org"
+      "@type" "Person"
+      "name" .Title
+      "alternateName" "Don HUANG"
+      "url" site.Home.Permalink
+      "jobTitle" $person.role
+      "sameAs" $same_as
+      "alumniOf" $schools
+      "knowsAbout" $person.interests
+    }}
+
+    {{ with index $person.organizations 0 }}
+      {{ $schema = merge $schema (dict "worksFor" (dict "@type" "Organization" "name" .name "url" .url)) }}
+    {{ end }}
+
+    {{ with ((.Resources.ByType "image").GetMatch "*avatar*") }}
+      {{ $schema = merge $schema (dict "image" .Permalink) }}
+    {{ end }}
+
+    <script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+  {{ end }}
+{{ end }}

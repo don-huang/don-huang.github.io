@@ -1,13 +1,28 @@
 ---
-title: Recent & Upcoming Talks
-cms_exclude: true
-#url: talk
+title: Talks
+date: 2026-07-21
+type: landing
+description: Selected invited talks in financial mathematics, stochastic control, retirement finance, and actuarial science.
 
-# View
-view: card
+design:
+  spacing: '4.5rem'
 
-# Optional cover image (relative to `assets/media/` folder).
-image:
-  caption: ''
-  filename: ''
+sections:
+  - block: content-heading
+    content:
+      level: 1
+      title: Talks
+      text: Selected invited presentations in financial mathematics, stochastic control, and actuarial science.
+
+  - block: collection
+    content:
+      count: 0
+      sort_by: Date
+      sort_ascending: false
+      filters:
+        folders:
+          - events
+    design:
+      view: talk-list
+      columns: 1
 ---

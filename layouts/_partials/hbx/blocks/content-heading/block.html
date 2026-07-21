@@ -1,0 +1,13 @@
+{{/* Semantic heading shared by landing pages and home-page sections. */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $level := $block.content.level | default 2 }}
+
+<header class="content-heading">
+  {{ if eq $level 1 }}
+    <h1>{{ $block.content.title }}</h1>
+  {{ else }}
+    <h2>{{ $block.content.title }}</h2>
+  {{ end }}
+  {{ with $block.content.text }}<p>{{ . | $page.RenderString }}</p>{{ end }}
+</header>

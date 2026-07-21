@@ -1,6 +1,8 @@
 ---
 title: ESG Quantitative Scoring System and ML-Driven Investment Research
 date: 2023-01-01
+summary: A four-layer ESG research system combining structured data, disclosures, and financial news to produce frequently updated, explainable company-level signals.
+featured: false
 tags:
   - ESG
   - machine learning

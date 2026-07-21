@@ -1,6 +1,8 @@
 ---
 title: AI-Driven MPF Retirement Advisory System
 date: 2024-01-01
+summary: AI-driven retirement advisory combining lifecycle optimisation, personalised retirement-gap analysis, and constraint-aware MPF fund selection in a regulated deployment architecture.
+featured: true
 tags:
   - pension
   - retirement finance

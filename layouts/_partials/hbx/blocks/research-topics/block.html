@@ -1,0 +1,41 @@
+{{/* Local text-forward research topics block. */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+
+<div class="research-topics">
+  <header class="research-topics-header">
+    {{ if $page.IsHome }}
+      <h2>{{ $block.content.title }}</h2>
+    {{ else }}
+      <h1>{{ $block.content.title }}</h1>
+    {{ end }}
+    {{ with $block.content.text }}<p>{{ . | $page.RenderString }}</p>{{ end }}
+  </header>
+
+  <div class="research-topics-grid">
+    {{ range $block.content.items }}
+      <article class="research-topic" id="{{ .name | urlize }}">
+        {{ if $page.IsHome }}<h3>{{ .name }}</h3>{{ else }}<h2>{{ .name }}</h2>{{ end }}
+        <p>{{ .description | $page.RenderString }}</p>
+
+        {{ with .topics }}
+          <ul class="research-keywords" aria-label="Topics">
+            {{ range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+        {{ end }}
+
+        {{ with .links }}
+          <ul class="research-links" aria-label="Related work">
+            {{ range . }}
+              <li><a href="{{ .url | relLangURL }}">{{ .text }} <span aria-hidden="true">→</span></a></li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </article>
+    {{ end }}
+  </div>
+
+  {{ with $block.content.cta }}
+    <a class="section-link" href="{{ .url | relLangURL }}">{{ .text }} <span aria-hidden="true">→</span></a>
+  {{ end }}
+</div>

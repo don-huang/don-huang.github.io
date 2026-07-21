@@ -1,6 +1,8 @@
 ---
 title: Portfolio Management via Reinforcement Learning
 date: 2021-12-31
+summary: A sequential portfolio-rebalancing framework that learns policies under changing market states, tracking objectives, and realistic transaction costs.
+featured: true
 tags:
   - reinforcement learning
   - portfolio optimisation

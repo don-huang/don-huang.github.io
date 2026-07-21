@@ -2,6 +2,7 @@
 title: 'Projects'
 date: 2024-05-19
 type: landing
+description: Research-to-production projects in retirement advisory, portfolio management, ESG analytics, and AI-enabled wealth management.
 
 design:
   # Section spacing
@@ -9,17 +10,21 @@ design:
 
 # Page sections
 sections:
+  - block: content-heading
+    content:
+      level: 1
+      title: Projects
+      text: Selected research-to-production work in retirement, portfolio management, sustainable finance, and AI-enabled advisory.
+
   - block: collection
     content:
-      title: Selected Projects
-      text: I enjoy making things. Here are a selection of projects that I have worked on over the years.
+      count: 0
       filters:
         folders:
           - projects
     design:
-      view: article-grid
-      fill_image: false
-      columns: 3
+      view: summary-grid
+      columns: 2
       show_date: false
       show_read_time: false
       show_read_more: false

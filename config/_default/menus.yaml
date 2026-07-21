@@ -1,16 +1,19 @@
 main:
-  - name: About
-    url: /
+  - name: about
+    url: /#about
     weight: 10
-  - name: Publications
-    url: /#publications
+  - name: research
+    url: /research/
     weight: 20
-  - name: Projects
-    url: /projects/
+  - name: publications
+    url: /publications/
     weight: 30
-  - name: Talks
-    url: /#talks
+  - name: projects
+    url: /projects/
     weight: 40
-  - name: Experience
-    url: /experience/
+  - name: talks
+    url: /events/
     weight: 50
+  - name: experience
+    url: /experience/
+    weight: 60

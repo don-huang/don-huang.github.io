@@ -1,0 +1,107 @@
+{{/* Local profile block: a restrained two-column academic biography. */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $author := $block.content.username | default "admin" }}
+{{ $person_page := site.GetPage (printf "/authors/%s" $author) }}
+
+{{ if not $person_page }}
+  {{ errorf "Profile block could not find author page /authors/%s" $author }}
+{{ end }}
+
+{{ $person := $person_page.Params }}
+{{ $avatar := ($person_page.Resources.ByType "image").GetMatch "*avatar*" }}
+
+<div class="profile-about">
+  <aside class="profile-identity" aria-label="Profile">
+    {{ with $avatar }}
+      {{ $portrait := .Fill "600x600 Smart webp q90" }}
+      <img
+        class="profile-avatar"
+        src="{{ $portrait.RelPermalink }}"
+        width="240"
+        height="240"
+        alt="Portrait of {{ $person_page.Title }}"
+        fetchpriority="high"
+      >
+    {{ end }}
+
+    <h1>{{ $person_page.Title }}</h1>
+    {{ with $person.role }}<p class="profile-role">{{ . | markdownify }}</p>{{ end }}
+
+    {{ range $person.organizations }}
+      <p class="profile-organization">
+        {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}
+        {{ .name }}
+        {{ if .url }}</a>{{ end }}
+      </p>
+    {{ end }}
+
+    {{ with $person.profiles }}
+      <ul class="profile-social" aria-label="Professional profiles">
+        {{ range . }}
+          {{ $link := .url | default .link }}
+          {{ $scheme := (urls.Parse $link).Scheme }}
+          <li>
+            <a
+              href="{{ $link | safeURL }}"
+              aria-label="{{ .label | default .icon }}"
+              title="{{ .label | default .icon }}"
+              {{ if in (slice "http" "https") $scheme }}target="_blank" rel="noopener"{{ end }}
+            >
+              {{ partial "functions/get_icon" (dict "name" .icon "attributes" "class='profile-social-icon'") }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    {{ with $block.content.button }}
+      <a class="profile-cv" href="{{ .url | relLangURL }}" target="_blank" rel="noopener">
+        {{ partial "functions/get_icon" (dict "name" "document-arrow-down" "attributes" "class='profile-cv-icon'") }}
+        {{ .text }}
+      </a>
+    {{ end }}
+  </aside>
+
+  <div class="profile-narrative">
+    <section class="profile-bio" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      {{ $person_page.Content }}
+    </section>
+
+    {{ with $person.bio_zh }}
+      <section class="profile-bio-zh" lang="zh-Hans" aria-labelledby="about-zh-heading">
+        <h2 id="about-zh-heading">中文简介</h2>
+        {{ . | markdownify }}
+      </section>
+    {{ end }}
+
+    <div class="profile-details">
+      {{ with $person.interests }}
+        <section aria-labelledby="interests-heading">
+          <h2 id="interests-heading">Research Interests</h2>
+          <ul class="profile-interests">
+            {{ range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+        </section>
+      {{ end }}
+
+      {{ with $person.education }}
+        <section aria-labelledby="education-heading">
+          <h2 id="education-heading">Education</h2>
+          <ul class="profile-education">
+            {{ range . }}
+              <li>
+                <p>
+                  <strong>{{ .area }}</strong>
+                  {{ with .date_end }}<span> · {{ time.Format "2006" . }}</span>{{ end }}
+                </p>
+                <p>{{ .institution }}</p>
+              </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    </div>
+  </div>
+</div>

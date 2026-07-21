@@ -1,0 +1,15 @@
+{{ $item := .item }}
+{{ $summary := partial "functions/get_summary" $item }}
+
+<article class="summary-card">
+  <h3><a href="{{ $item.RelPermalink }}">{{ $item.Title }}</a></h3>
+  <div class="summary-card-copy">{{ $summary | markdownify }}</div>
+
+  {{ with $item.Params.tags }}
+    <ul class="summary-card-tags" aria-label="Topics">
+      {{ range first 3 . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+  {{ end }}
+
+  <a class="summary-card-link" href="{{ $item.RelPermalink }}">View project <span aria-hidden="true">→</span></a>
+</article>

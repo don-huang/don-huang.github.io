@@ -25,9 +25,9 @@ profiles:
   - icon: brands/linkedin
     url: https://www.linkedin.com/in/don-yao-tung-huang-8b590124
     label: LinkedIn
-  - icon: academicons/google-scholar
-    url: https://scholar.google.com/
-    label: Google Scholar
+
+bio_zh: >-
+  黄耀东（Don HUANG）是金融数学研究者及金融科技创业者，现任 AQUMON 联合创始人兼首席科学家。他的工作连接随机控制、投资组合优化与机器学习，并将相关方法应用于退休投资、智能投顾和机构财富管理系统。此前，他在香港科技大学取得数学博士学位，并曾于香港城市大学及伦敦帝国理工学院从事研究工作。
 
 interests:
   - Financial Mathematics
@@ -127,8 +127,8 @@ languages:
     percent: 90
 ---
 
-Yao Tung Huang (Don HUANG) is a researcher and entrepreneur working at the intersection of financial mathematics, stochastic control, and AI-driven wealth management. He holds a PhD in Mathematics from HKUST, where his doctoral work addressed stochastic optimal control problems arising in retirement product design and derivatives pricing. He subsequently held postdoctoral and visiting positions at City University of Hong Kong and Imperial College London.
+Yao Tung Huang (Don HUANG) is a researcher and entrepreneur working at the intersection of financial mathematics, stochastic control, and AI-driven wealth management. He holds a PhD in Mathematics from HKUST, where his doctoral research addressed stochastic optimal control problems in retirement product design and derivatives pricing. He later held postdoctoral and visiting research appointments at City University of Hong Kong and Imperial College London.
 
-In 2015, he co-founded AQUMON (Magnum Research Limited), where he serves as Chief Scientist. His work at AQUMON spans the full research-to-production pipeline: from stochastic optimisation and machine learning methodology to the deployment of institutional-scale AI investment systems. AQUMON's pension advisory platform has been deployed to serve approximately one million Hong Kong residents, with cumulative assets under advice exceeding USD 10 billion.
+In 2015, he co-founded AQUMON (Magnum Research Limited), where he serves as Chief Scientist. His work spans the full research-to-production pipeline: mathematical modelling, portfolio optimisation, machine learning methodology, system architecture, and the deployment of institutional AI investment systems across the Asia-Pacific region.
 
-His academic publications appear in *SIAM Journal on Financial Mathematics*, *Quantitative Finance*, and *Journal of Economic Dynamics and Control*. His current research interests include ML-driven portfolio optimisation, reinforcement learning for asset allocation, financial NLP, and LLM-based investment advisory systems.
+His publications appear in *SIAM Journal on Financial Mathematics*, *Quantitative Finance*, and *Journal of Economic Dynamics and Control*. His current interests include data-driven portfolio construction, reinforcement learning for asset allocation, financial NLP, and LLM-enabled investment advisory.

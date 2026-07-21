@@ -2,6 +2,7 @@
 title: 'Experience'
 date: 2023-10-24
 type: landing
+description: Professional experience, academic appointments, education, awards, and languages of Yao Tung Huang.
 
 design:
   spacing: '5rem'
@@ -10,26 +11,12 @@ design:
 
 # Page sections
 sections:
-  - block: resume-experience
+  - block: content-heading
     content:
-      username: admin
-    design:
-      # Hugo date format
-      date_format: 'January 2006'
-      # Education or Experience section first?
-      is_education_first: false
-  - block: resume-skills
+      level: 1
+      title: Experience
+      text: Research, technology leadership, teaching, and professional appointments.
+  - block: profile-history
     content:
-      title: Skills & Hobbies
-      username: admin
-    design:
-      show_skill_percentage: false
-  - block: resume-awards
-    content:
-      title: Awards
-      username: admin
-  - block: resume-languages
-    content:
-      title: Languages
       username: admin
 ---

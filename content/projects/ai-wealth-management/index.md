@@ -1,6 +1,8 @@
 ---
 title: AI-Driven Automatic Wealth Management Solution
 date: 2024-03-31
+summary: A production-grade digital wealth architecture integrating client profiling, goal-based portfolio construction, monitoring, rebalancing, and execution infrastructure.
+featured: true
 tags:
   - wealth management
   - portfolio construction
