@@ -34,6 +34,8 @@ links:
     url: /20260719/AI_Quant_Investment_20260719.pdf
   - name: AI Agents Demo Manual
     url: /20260719/AI_Agents_Demo_0719.pdf
+  - name: Code
+    url: /20260719/AI_Agent_Demo_Code.zip
 
 slides: ""
 
@@ -52,3 +54,4 @@ This two-hour online lecture, themed "Don't Race Against Machines," equips indiv
 
 - [Lecture Notes (PDF)](/20260719/AI_Quant_Investment_20260719.pdf)
 - [AI Agents Demo Manual (PDF)](/20260719/AI_Agents_Demo_0719.pdf)
+- [Code (ZIP)](/20260719/AI_Agent_Demo_Code.zip)
