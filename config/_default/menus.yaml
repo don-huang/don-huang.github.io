@@ -5,6 +5,9 @@ main:
   - name: news
     url: /news/
     weight: 20
+  - name: aqumon
+    url: /aqumon/
+    weight: 25
   - name: research
     url: /research/
     weight: 30
@@ -14,6 +17,6 @@ main:
   - name: projects
     url: /projects/
     weight: 50
-  - name: courses &amp; talks
+  - name: courses & talks
     url: /events/
     weight: 60
