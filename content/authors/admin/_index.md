@@ -27,7 +27,15 @@ profiles:
     label: LinkedIn
 
 bio_zh: >-
-  黄耀东（Don HUANG）是金融数学研究者及金融科技创业者，现任 AQUMON 联合创始人兼首席科学家。他的工作连接随机控制、投资组合优化与机器学习，并将相关方法应用于退休投资、智能投顾和机构财富管理系统。此前，他在香港科技大学取得数学博士学位，并曾于香港城市大学及伦敦帝国理工学院从事研究工作。
+  黄耀东（Don HUANG）是一位数学家、量化金融从业者，也是 AQUMON 的联合创始人兼首席科学家。他于香港科技大学获得数学博士学位，其工作横跨数学建模、人工智能、量化投资、投资组合构建、风险管理和机构金融科技等领域。
+
+  在创立 AQUMON 之前，黄博士曾在香港科技大学数学系教授金融工程课程，并赴伦敦帝国理工学院和香港城市大学进行学术访问。作为第一作者，他在金融工程领域的国际顶尖学术期刊上发表了多篇论文。他拥有超过二十年的 AI 驱动量化投资研究经验，培养了超过一百位量化研究员和科学家。
+
+  黄博士的学术与产业工作始终聚焦于将数学和统计思想转化为投资模型、研究平台、自动化投顾系统和生产级金融科技解决方案。这种学术训练、教学经验、量化研究以及直接参与建设一家受监管的金融科技公司的综合经历，为相关课程提供了坚实的实践基础。
+
+  AQUMON 运用人工智能、机器学习和数学建模来识别全球金融市场的投资机会。公司开发量化策略、智能研究平台和算法解决方案，用于资产配置、风险管理、自动化交易和数字财富管理。通过将结构化市场和金融数据与非结构化文本、新闻和情绪信息相结合，AQUMON 生成更全面的投资信号和研究洞察。
+
+  AQUMON 的量化策略和技术解决方案已被多家香港强积金退休基金管理人、量化对冲基金、券商、银行、保险公司等金融机构采用。公司建立了一支超过 50 位科学家的团队，专长涵盖人工智能、量化建模、大数据、随机优化、深度学习和强化学习。AQUMON 连续多年入选福布斯亚洲 100 值得关注企业（Forbes Asia 100 to Watch），并被列入毕马威中国金融科技 50 强（KPMG FinTech 50）及粤港澳大湾区金融科技飞鱼企业 20 强。
 
 interests:
   - Financial Mathematics
@@ -36,24 +44,6 @@ interests:
   - Machine Learning for Finance
   - AI Agents and LLMs for Wealth Management
   - Quantitative Retirement Investment Systems
-
-education:
-  - area: PhD Mathematics
-    institution: The Hong Kong University of Science and Technology (HKUST)
-    date_start: 2011-09-01
-    date_end: 2014-12-31
-    summary: |
-      Research in financial mathematics, stochastic control, and portfolio optimization. Supervised by Prof. Yue Kuen Kwok. Recipient of PhD Scholarship (2011–2014) and HKUST Research Excellence Award (2012).
-  - area: MSc Mathematics (Financial Mathematics and Statistics)
-    institution: The Hong Kong University of Science and Technology (HKUST)
-    date_start: 2007-09-01
-    date_end: 2008-12-31
-    summary: ''
-  - area: BEng Computer Science and Information Systems
-    institution: Huazhong University of Science and Technology
-    date_start: 2000-09-01
-    date_end: 2004-07-01
-    summary: ''
 
 work:
   - position: Co-Founder & Chief Scientist
@@ -127,8 +117,12 @@ languages:
     percent: 90
 ---
 
-Yao Tung Huang (Don HUANG) is a researcher and entrepreneur working at the intersection of financial mathematics, stochastic control, and AI-driven wealth management. He holds a PhD in Mathematics from HKUST, where his doctoral research addressed stochastic optimal control problems in retirement product design and derivatives pricing. He later held postdoctoral and visiting research appointments at City University of Hong Kong and Imperial College London.
+Don Huang is a mathematician, quantitative finance practitioner, and Co-founder and Chief Scientist of AQUMON. He received his PhD in Mathematics from HKUST, and his work lies at the intersection of mathematical modeling, artificial intelligence, quantitative investment, portfolio construction, risk management, and institutional financial technology.
 
-In 2015, he co-founded AQUMON (Magnum Research Limited), where he serves as Chief Scientist. His work spans the full research-to-production pipeline: mathematical modelling, portfolio optimisation, machine learning methodology, system architecture, and the deployment of institutional AI investment systems across the Asia-Pacific region.
+Before founding AQUMON, Dr. Huang taught financial engineering courses in the Department of Mathematics at HKUST and undertook academic visits to Imperial College London and City University of Hong Kong. As first author, he has published multiple papers in leading international academic journals in financial engineering. He has more than twenty years of experience in AI-driven quantitative investment research and has trained more than one hundred quantitative researchers and scientists.
 
-His publications appear in *SIAM Journal on Financial Mathematics*, *Quantitative Finance*, and *Journal of Economic Dynamics and Control*. His current interests include data-driven portfolio construction, reinforcement learning for asset allocation, financial NLP, and LLM-enabled investment advisory.
+Dr. Huang's academic and industrial work has consistently focused on translating mathematical and statistical ideas into investment models, research platforms, automated advisory systems, and production-level FinTech solutions. This combination of academic training, teaching experience, quantitative research, and direct involvement in building a regulated financial technology company provides the practical foundation for the proposed course.
+
+AQUMON applies artificial intelligence, machine learning, and mathematical modeling to identify investment opportunities across global financial markets. The company develops quantitative strategies, intelligent research platforms, and algorithmic solutions for asset allocation, risk management, automated trading, and digital wealth management. By combining structured market and financial data with unstructured text, news, and sentiment information, AQUMON generates more comprehensive investment signals and research insights.
+
+AQUMON's quantitative strategies and technology solutions have been adopted by multiple Hong Kong MPF retirement fund managers, quantitative hedge funds, securities firms, banks, insurers, and other financial institutions. The company has built a team of more than 50 scientists with expertise in artificial intelligence, quantitative modeling, big data, stochastic optimization, deep learning, and reinforcement learning. AQUMON has also been recognized by Forbes Asia 100 to Watch and has been named among the KPMG FinTech 50 and the Greater Bay Area FinTech Flying Fish Top 20 for multiple years.
