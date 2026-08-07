@@ -1,8 +1,8 @@
 ---
-title: Talks
+title: Courses & Talks
 date: 2026-07-21
 type: landing
-description: Selected invited talks in financial mathematics, stochastic control, retirement finance, and actuarial science.
+description: Selected invited talks and courses in financial mathematics, stochastic control, retirement finance, and actuarial science.
 
 design:
   spacing: '4.5rem'
@@ -11,8 +11,8 @@ sections:
   - block: content-heading
     content:
       level: 1
-      title: Talks
-      text: Selected invited presentations in financial mathematics, stochastic control, and actuarial science.
+      title: Courses & Talks
+      text: Selected invited presentations and courses in financial mathematics, stochastic control, and actuarial science.
 
   - block: collection
     content:
