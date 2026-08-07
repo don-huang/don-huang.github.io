@@ -17,6 +17,3 @@ main:
   - name: talks
     url: /events/
     weight: 60
-  - name: experience
-    url: /experience/
-    weight: 70
