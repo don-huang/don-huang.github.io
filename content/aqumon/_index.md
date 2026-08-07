@@ -16,16 +16,10 @@ sections:
   - block: markdown
     content:
       text: |
-        <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 2rem;">
-          <div style="flex: 1; min-width: 280px; padding: 2rem; background: #f8f9fa; border-radius: 12px; text-align: center;">
-            <h3 style="margin-top: 0;">AQUMON LinkedIn</h3>
-            <p style="color: #555;">Follow AQUMON on LinkedIn for the latest company updates, product launches, and industry insights.</p>
-            <a href="https://www.linkedin.com/company/aqumon/" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 0.8rem 2rem; background: #0a66c2; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s;">Visit LinkedIn Page →</a>
-          </div>
-          <div style="flex: 1; min-width: 280px; padding: 2rem; background: #f8f9fa; border-radius: 12px; text-align: center;">
-            <h3 style="margin-top: 0;">AQUMON 微信公众号</h3>
-            <p style="color: #555;">关注 AQUMON 微信公众号，获取最新行业洞察、产品动态与活动资讯。</p>
-            <a href="https://mp.weixin.qq.com/s?__biz=MzU5NzQ2NzY0Ng==&mid=2247483666&idx=1&sn=8e7c6f5e5c5e5c5e5c5e5c5e5c5e5c5e&chksm=fe5d5f5dc92ad64b9e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 0.8rem 2rem; background: #07c160; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s;">访问微信公众号 →</a>
-          </div>
+        <div style="max-width: 480px; margin: 2rem auto 0; padding: 2rem; border: 1px solid var(--site-border); border-radius: 12px; text-align: center;">
+          <svg style="width: 40px; height: 40px; margin-bottom: 1rem;" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="2" fill="#0A66C2"/><path d="M8.5 9.5h-2v7h2v-7zM7.5 7.5a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zM10.5 9.5h2v1.2c.3-.5 1-1.2 2.5-1.2 2 0 3.5 1.5 3.5 4v3h-2v-3c0-1.5-.5-2-1.5-2s-1.5.5-1.5 2v3h-2v-7z" fill="#fff"/></svg>
+          <h3 style="margin: 0 0 0.5rem; color: var(--site-text);">AQUMON LinkedIn</h3>
+          <p style="margin: 0 0 1.5rem; color: var(--site-muted);">Follow AQUMON on LinkedIn for the latest company updates, product launches, and industry insights.</p>
+          <a href="https://www.linkedin.com/company/aqumon/" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 0.75rem 2rem; background: #0a66c2; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600;">Visit LinkedIn Page →</a>
         </div>
 ---
