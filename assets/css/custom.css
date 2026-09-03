@@ -523,7 +523,7 @@ select:focus-visible {
 
 .talk-item {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
+  grid-template-columns: 7.5rem minmax(0, 1fr);
   gap: 1.25rem;
   padding: 1.5rem 0;
   border-bottom: 1px solid var(--site-border);
@@ -847,8 +847,8 @@ select:focus-visible {
   }
 
   .talk-item {
-    grid-template-columns: 3.5rem minmax(0, 1fr);
-    gap: 0.85rem;
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 
   .history-item-heading {
