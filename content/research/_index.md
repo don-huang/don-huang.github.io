@@ -21,8 +21,6 @@ sections:
             - Variable annuities
             - Monte Carlo methods
           links:
-            - text: Related publications
-              url: /publication_types/article-journal/
             - text: MPF retirement advisory project
               url: /projects/mpf-pension-advisory/
         - name: Portfolio Optimization & Reinforcement Learning
