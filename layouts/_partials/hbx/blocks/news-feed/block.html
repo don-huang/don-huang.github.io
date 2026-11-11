@@ -1,4 +1,4 @@
-{{/* Local news index: a compact, chronological text list. */}}
+{{/* Local news index with photos from linked pages when available. */}}
 {{ $block := .wcBlock }}
 {{ $items := (where site.RegularPages "Section" "news").ByDate.Reverse }}
 
@@ -6,22 +6,31 @@
   {{ if $items }}
     <div class="news-list">
       {{ range $items }}
-        <article class="news-item">
-          <h2><a href="{{ with .Params.link }}{{ . }}{{ else }}{{ .RelPermalink }}{{ end }}">{{ .Title }}</a></h2>
-          {{ with .Params.summary }}
-            <p class="news-summary">{{ . | markdownify }}</p>
-          {{ end }}
-          <div class="news-meta">
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
-            {{ with .GetTerms "categories" }}
-              <span aria-hidden="true">·</span>
-              <ul aria-label="Categories">
-                {{ range . }}
-                  <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-                {{ end }}
-              </ul>
+        {{ $href := .Params.link | default .RelPermalink }}
+        {{ $thumbnail := partial "functions/news-thumbnail" . }}
+        <article class="news-item{{ if $thumbnail }} news-item--with-image{{ end }}">
+          <div class="news-item-content">
+            <h2><a href="{{ $href }}">{{ .Title }}</a></h2>
+            {{ with .Params.summary }}
+              <p class="news-summary">{{ . | markdownify }}</p>
             {{ end }}
+            <div class="news-meta">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+              {{ with .GetTerms "categories" }}
+                <span aria-hidden="true">·</span>
+                <ul aria-label="Categories">
+                  {{ range . }}
+                    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+            </div>
           </div>
+          {{ with $thumbnail }}
+            <a class="news-thumbnail" href="{{ $href }}" aria-hidden="true" tabindex="-1">
+              <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="" loading="lazy" decoding="async">
+            </a>
+          {{ end }}
         </article>
       {{ end }}
     </div>

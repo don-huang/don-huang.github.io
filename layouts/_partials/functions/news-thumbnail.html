@@ -1,0 +1,33 @@
+{{/* Reuse the linked page's photo without duplicating image paths in News. */}}
+{{- $page := . -}}
+{{- with .Params.link -}}
+  {{- with site.GetPage . -}}
+    {{- $page = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $image := $page.Resources.GetMatch "*featured*" -}}
+{{- if not $image -}}
+  {{- with findRESubmatch `<img\b[^>]*\bsrc=["']([^"']+)["']` $page.Content 1 -}}
+    {{- $src := index (index . 0) 1 | htmlUnescape -}}
+    {{- $image = $page.Resources.GetMatch $src -}}
+    {{- if not $image -}}
+      {{- $image = resources.Get (strings.TrimPrefix "/" $src) -}}
+    {{- end -}}
+    {{- if not $image -}}
+      {{- $url := urls.Parse $src -}}
+      {{- $staticPath := path.Join "static" $url.Path -}}
+      {{- if and (not $url.Host) (fileExists $staticPath) -}}
+        {{- $image = resources.FromString (path.Join "news-thumbnails" $url.Path) (readFile $staticPath) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $thumbnail := false -}}
+{{- with $image -}}
+  {{- if in (slice "jpeg" "png" "webp" "gif" "tiff" "bmp") .MediaType.SubType -}}
+    {{- $thumbnail = .Fit "640x480 webp q82" -}}
+  {{- end -}}
+{{- end -}}
+{{- return $thumbnail -}}
